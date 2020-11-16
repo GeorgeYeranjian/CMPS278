@@ -5,3 +5,23 @@
     font-size: 16px;
     border: none;
   }
+
+#uploadbox{
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 18px red;
+  margin-top: 250px;
+  margin-left: 350px;
+  margin-right: 350px;
+  text-align: center;
+}
+
+*{
+  font-size: medium;
+}
+
+
+#submit{
+  border-radius: 15%;
+  background-image: linear-gradient(to right, #ff1900, #636408);
+}

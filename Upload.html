@@ -22,12 +22,12 @@ $(function(){
 </script>
 <!--end of Navigation bar-->
 
-    <div style="padding-top: 250px; text-align: center;">
+    <div id="uploadbox">
         <p>Click on the "Choose File" button to upload a file:</p>
         
         <form action="Upload.php" method="POST" enctype="multipart/form-data" style=" display: inline-block;">
         <input type="file" id="myFile" name="file">
-        <button type="submit" name="submit">Upload</button>
+        <button type="submit" name="submit" id="submit">Upload</button>
         </form>
     </div>
     </body>
