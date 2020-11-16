@@ -1,0 +1,10 @@
+#frame_div{
+    position: relative;
+    left: 210px;
+}
+
+#suggested_div{
+    float: right;
+    position: relative;
+    top: -400px;
+}

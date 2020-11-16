@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="watch.css"> 
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Watch</title>
+    </head>
+    <body>
+        
+<!--Navigation bar-->
+<div id="nav-placeholder">
+
+</div>
+
+<script>
+$(function(){
+  $("#nav-placeholder").load("menu.html");
+});
+</script>
+<!--end of Navigation bar-->
+
+        <div id="frame_div">
+        <iframe width="50%" height="300"
+        src="https://www.youtube.com/embed/tfSS1e3kYeo">
+        </iframe>
+        <br>
+        <h1>Title and author</h1>
+        </div>
+        <div id="suggested_div"></div>
+        <script>
+            $(function(){
+              $("#suggested_div").load("suggested.html");
+            });
+            </script>
+    </body>
+</html>
