@@ -4,10 +4,21 @@
 * {
     font-family: sans-serif;
 }
+html,body{
+  height:100%;
+}
+
+#closed{
+  border-right: 1px solid #818181;
+  float: left;
+  height: 100%;
+  width: 40px; 
+  overflow: hidden;
+}
 
 .sidenav {
     height: 100%;
-    width: 200px;
+    width: 0px;
     position: fixed;
     z-index: 1;
     top: 0;
