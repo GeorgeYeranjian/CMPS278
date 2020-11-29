@@ -2,3 +2,40 @@
 #main {
     margin-left: 50px; /* Same as the width of the sidenav */
 }
+
+.videogrid{
+    width: 50%; 
+    border: 1px solid white;
+    height: 120px;
+    margin-bottom: 30px;
+    position: relative;
+}
+.thumbnail{
+  width: 40%;
+  height: 100%;
+  float: left;
+  margin-right: 10px;
+}
+.title{
+  font-size: 15px;
+  font-weight: bold;
+}
+.viewcount{
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.lengthdiv{
+    background-color: black;
+    width: auto;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    left: 200px;
+    bottom: 10px;
+}
+.lengthspan{
+    color: white;
+    font-size: small;
+    text-align: center;
+}
