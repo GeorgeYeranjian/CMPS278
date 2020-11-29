@@ -21,11 +21,12 @@ $(function(){
 });
 </script>
 <!--end of Navigation bar-->
-<h1 style="text-align: center;">UPLOAD VIDEO</h1>
+
+<h1>________________UPLOAD THUMBNAIL</h1>
     <div id="uploadbox">
         <p>Click on the "Choose File" button to upload a file:</p>
         
-        <form action="Upload.php" method="POST" enctype="multipart/form-data" style=" display: inline-block;">
+        <form action="Uploadth.php" method="POST" enctype="multipart/form-data" style=" display: inline-block;">
         <input type="file" id="myFile" name="file">
         <button type="submit" name="submit" id="submit">Upload</button>
         </form>

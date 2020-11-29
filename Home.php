@@ -41,7 +41,7 @@ if (!$con) {
   <p style="margin-right: 20px; font-weight: bold;">Suggested Videos</p>
   <div class="grid-container">
       <?php
-      $sql = "SELECT id, name FROM videos";
+      $sql = "SELECT id, name ,Thlocation FROM videos";
       $result = $con->query($sql);
       
       if ($result->num_rows > 0) {
@@ -49,7 +49,7 @@ if (!$con) {
           while($row = $result->fetch_assoc()) {
               echo "<div id=".$row["id"].">";
               echo "<a href=". "watch.php?id=".$row["id"].">";
-              echo "<img src="."testImage.jpg"." class="."thumbnail"."></a>";
+              echo "<img src=".$row["Thlocation"]." class="."thumbnail"."></a>";
               echo "<p class="."title.".">" .$row["name"]."</p>";
               echo "</div>";
           }

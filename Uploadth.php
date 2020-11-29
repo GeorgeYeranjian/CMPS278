@@ -21,7 +21,6 @@ try {
     `Views` int(11),
     `Duration` int(11),
     `Thlocation` varchar(255) NOT NULL,
-    `Thname` varchar(255) NOT NULL,
     
 
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -59,7 +58,7 @@ if(isset($_POST['submit'])){
     $videoFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
     // Valid file extensions
-    $extensions_arr = array("mp4","avi","3gp","mov","mpeg");
+    $extensions_arr = array('jpg','png','jpeg','gif');
 
     // Check extension
     if( in_array($videoFileType,$extensions_arr) ){
@@ -71,11 +70,13 @@ if(isset($_POST['submit'])){
          // Upload
          if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
            // Insert record
-           $query = "INSERT INTO videos(name,location) VALUES('".$name."','".$target_file."')";
+           $query = "UPDATE videos
+           SET Thlocation='$target_file', Thname='$name'
+           WHERE id= (SELECT MAX(id) FROM videos);";
 
            mysqli_query($con,$query);
            echo "Upload successfully.";
-           header("Location: Thumbnail.php");
+           header("Location: Home.php");
          }
        }
 
@@ -86,40 +87,5 @@ if(isset($_POST['submit'])){
   } 
 
 
-// if (isset($_POST['submit'])){
-//     $file = $_FILES['file'];
-//     $fileName = $_FILES['file']['name'];
-//     $fileTmpName = $_FILES['file']['tmp_name'];
-//     $fileSize = $_FILES['file']['size'];
-//     $fileError = $_FILES['file']['error'];
-//     $fileType = $_FILES['file']['type'];
 
-//     $fileExt = explode('.', $fileName);
-//     $fileActualExt = strtolower(end($fileExt));
-
-//     $allowed = array('mp4','png','jpg');
-
-//     if(in_array($fileActualExt, $allowed)){
-//         if ($fileError === 0 ) {
-//             if ($fileSize < 100000000) {
-//                 $fileNameNew = $fileName.".". $fileActualExt;
-//                 $fileDestination = 'Uploadedfiles/' .$fileNameNew;
-
-//                 move_uploaded_file($fileTmpName, $fileDestination);
-//                 header("Location: Upload.html?uploadsuccess");
-                
-//             }
-//             else{
-//                 echo "file too big";
-//             }
-//         }
-//         else{
-//             echo "There was an error";
-//         }
-//     }
-//     else{
-//         echo "you cannot upload files of this type!";
-//     }
-
-// }
 ?>
