@@ -44,14 +44,19 @@ if (!$con) {
         <br>
         <h1>Title and author</h1> -->
         <?php
-     $fetchVideos = mysqli_query($con, "SELECT location FROM videos ORDER BY id DESC");
-     while($row = mysqli_fetch_assoc($fetchVideos)){
+
+        $id = $_GET['id'];
+      
+
+
+     $fetchVideos = mysqli_query($con, "SELECT location FROM videos WHERE id ='$id' ");
+     $row = mysqli_fetch_assoc($fetchVideos);
        $location = $row['location'];
  
        echo "<div >";
-       echo "<video src='".$location."' controls width='320px' height='200px' >";
+       echo "<video src='".$location."' controls width='500px' height='200px' >";
        echo "</div>";
-     }
+    
      ?>
         </div>
         <div id="suggested_div"></div>

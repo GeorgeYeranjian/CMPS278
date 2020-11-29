@@ -47,8 +47,8 @@ if (!$con) {
       if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
-              echo "<div>";
-              echo "<a href=". "watch.php".">";
+              echo "<div id=".$row["id"].">";
+              echo "<a href=". "watch.php?id=".$row["id"].">";
               echo "<img src="."testImage.jpg"." class="."thumbnail"."></a>";
               echo "<p class="."title.".">" .$row["name"]."</p>";
               echo "</div>";
