@@ -26,7 +26,7 @@
                 for ($x = 0; $x < count($cred); $x++) {
                     if($cred[$x][0]==$username AND $cred[$x][1]==$password){
                         echo "Welcome $username";
-                        header("Location: http://localhost/myproject/Home.html");
+                        header("Location: http://localhost/myproject/Home.php");
                         $flagok++;
                     }
                     
