@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'createdb.php';?>
     <?php include 'CreateAUTHtable.php';?>
+    <?php include 'CreateTableVideos.php';?>
+
     <title>Log In</title>
     
 </head>

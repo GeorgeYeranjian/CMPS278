@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="watch.css"> 
         <link rel="stylesheet" href="All.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Watch</title>
@@ -14,14 +15,15 @@
 <!--Navigation bar-->
 <div id="nav-placeholder">
 
+
+
 </div>
 
-<script>
-$(function(){
+<script >
+  $(function(){
   $("#nav-placeholder").load("menu.html");
 });
 </script>
-<!--end of Navigation bar-->
 
 <?php
 
@@ -35,6 +37,127 @@ $con = mysqli_connect($host, $user, $password,$dbname);
 if (!$con) {
   die("Connection failed: " . mysqli_connect_error());
 }
+
+  $id = $_GET['id'];
+  $query = "UPDATE videos
+  SET Views = Views + 1 
+  WHERE id= $id";
+
+
+
+
+mysqli_query($con,$query);
+
+?>
+
+
+<script type="text/javascript">
+// $(function(){
+//   $("#nav-placeholder").load("menu.html");
+// });
+
+$(document).ready(function() {
+    $("#like").click(function(e){
+        e.preventDefault();
+         
+                    $.ajax({
+                        type: "POST",
+                        url: 'like.php?id=<?=$id?>',
+                        data: { },
+                        success: function(data){
+                            console.log(data);
+                            $('#like').val(data);
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+
+    });
+    $("#dislike").click(function(e){
+        e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: 'dislike.php?id=<?=$id?>',
+                        data: {},
+                        success: function(data){
+                            console.log(data);
+                            $('#dislike').val(data);
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+
+    });
+});
+
+                        
+
+
+
+</script>
+<!--end of Navigation bar-->
+
+<?php
+
+
+// if(array_key_exists('like', $_POST)) { 
+//   like(); 
+// } 
+
+// else if(array_key_exists('dislike', $_POST)) { 
+//   Dislike(); 
+// } 
+// function like() { 
+//   $host = "localhost"; /* Host name */
+//   $user = "root"; /* User */
+//   $password = ""; /* Password */
+//   $dbname = "TUBEDB"; /* Database name */
+
+//   $con = mysqli_connect($host, $user, $password,$dbname);
+//   // Check connection
+//   if (!$con) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+
+//   $id = $_GET['id'];
+//   $query = "UPDATE videos
+//   SET likes = likes + 1 
+//   WHERE id= $id";
+
+
+
+
+// mysqli_query($con,$query);
+// }
+
+// function Dislike() { 
+//   $host = "localhost"; /* Host name */
+//   $user = "root"; /* User */
+//   $password = ""; /* Password */
+//   $dbname = "TUBEDB"; /* Database name */
+
+//   $con = mysqli_connect($host, $user, $password,$dbname);
+//   // Check connection
+//   if (!$con) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+
+
+//   $id = $_GET['id'];
+//   $query = "UPDATE videos
+//   SET Dislikes = Dislikes + 1 
+//   WHERE id= $id";
+
+
+
+
+// mysqli_query($con,$query);
+// }
+
 ?>
 
         <div id="frame_div">
@@ -49,15 +172,31 @@ if (!$con) {
       
 
 
-     $fetchVideos = mysqli_query($con, "SELECT location FROM videos WHERE id ='$id' ");
+     $fetchVideos = mysqli_query($con, "SELECT location, Likes, Dislikes, Views   FROM videos WHERE id ='$id' ");
      $row = mysqli_fetch_assoc($fetchVideos);
        $location = $row['location'];
- 
-       echo "<div >";
-       echo "<video src='".$location."' controls width='500px' height='200px' >";
-       echo "</div>";
-    
-     ?>
+       $Likes = $row['Likes'];
+       $Dislikes = $row['Dislikes'];
+       $Views = $row['Views'];
+
+      ?>
+       <div >
+        <video src=<?=$location?> controls width='500px' height='200px' ></video>
+       <br>
+       <div>
+          <p>Views : <?=$Views?></p>
+          <form method="post"> 
+        Likes:     
+        <input type="submit" name="like" id="like"
+                class="button" value=<?=$Likes?> /> 
+        &nbsp;Dislikes:
+        <input type="submit" name="dislike" id="dislike"
+                class="button" value=<?=$Dislikes?> /> 
+    </form>
+        
+      </div>
+       </div>
+      
         </div>
         <div id="suggested_div"></div>
         <script>
