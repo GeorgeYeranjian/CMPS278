@@ -28,7 +28,7 @@ $(function(){
         include "connect.php";
         session_start();
         $userid=$_SESSION["id"];
-        $sql="SELECT * FROM history WHERE userid='$userid'";
+        $sql="SELECT * FROM history WHERE userid='$userid' ORDER BY reg_date DESC";
         $result = $conn->query($sql);
 
         foreach($result as $video){
