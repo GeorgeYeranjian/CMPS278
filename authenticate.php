@@ -22,19 +22,22 @@
             if(isset($_GET['Username']) AND isset($_GET['Password'])){
                 $username = $_GET['Username'];
                 $password = $_GET['Password'];
-                
-                for ($x = 0; $x < count($cred); $x++) {
-                    if($cred[$x][0]==$username AND $cred[$x][1]==$password){
-                        echo "Welcome $username";
-                        header("Location: http://localhost/myproject/Home.php");
-                        $flagok++;
-                    }
-                    
-                 }
+                include "connect.php";
+                $sql="SELECT * FROM auth WHERE Username='$username' AND `Password`='$password'";
+                $result = $conn->query($sql);
+                if($result->rowCount() > 0){
+                    $user=$result->fetch();
+                    session_start();
+                    $_SESSION["username"]=$user["Username"];
+                    $_SESSION["password"]=$user["Password"];
+                    $_SESSION["id"]=$user["id"];
+
+                    header("Location: Home.php");
+                }
             }
 
             if($flagok ==0){
-                echo  "Worng password";
+                echo  "Wrong password";
             }
               
 

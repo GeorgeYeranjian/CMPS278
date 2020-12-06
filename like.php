@@ -16,10 +16,15 @@
   SET likes = likes + 1 
   WHERE id= $id";
 
+  session_start();
+  $userid=$_SESSION["id"];
+  $sql="INSERT INTO `likes` VALUES($userid,$id)";
+
 
 
 
 mysqli_query($con,$query);
+mysqli_query($con,$sql);
 
 $query2 = "SELECT Likes FROM videos WHERE id ='$id' ";
 

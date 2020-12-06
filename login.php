@@ -6,6 +6,7 @@
     <?php include 'createdb.php';?>
     <?php include 'CreateAUTHtable.php';?>
     <?php include 'CreateTableVideos.php';?>
+    <?php include 'CreateLikeTable.php';?>
 
     <title>Log In</title>
     

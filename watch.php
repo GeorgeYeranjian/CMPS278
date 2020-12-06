@@ -43,10 +43,16 @@ if (!$con) {
   SET Views = Views + 1 
   WHERE id= $id";
 
+  session_start();
+  $userid=$_SESSION["id"];
+  $query1="INSERT INTO history(`userid`,`videoid`) VALUES($userid,$id)";
+
+
 
 
 
 mysqli_query($con,$query);
+mysqli_query($con,$query1);
 
 ?>
 
@@ -63,6 +69,24 @@ $(document).ready(function() {
                     $.ajax({
                         type: "POST",
                         url: 'like.php?id=<?=$id?>',
+                        data: { },
+                        success: function(data){
+                            console.log(data);
+                            $('#like').val(data);
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+
+    });
+    $("#unlike").click(function(e){
+        e.preventDefault();
+         
+                    $.ajax({
+                        type: "POST",
+                        url: 'unlike.php?id=<?=$id?>',
                         data: { },
                         success: function(data){
                             console.log(data);
@@ -186,9 +210,23 @@ $(document).ready(function() {
        <div>
           <p>Views : <?=$Views?></p>
           <form method="post"> 
-        Likes:     
-        <input type="submit" name="like" id="like"
+        Likes:
+        <?php
+          include "connect.php";
+          $userid=$_SESSION["id"];
+          $sql="SELECT * FROM `likes` WHERE `userid`=$userid AND videoid=$id";
+          $result = $conn->query($sql);
+          if($result->rowCount()==0){?>
+            <input type="submit" name="like" id="like"
                 class="button" value=<?=$Likes?> /> 
+          <?php
+          }
+          else{?>
+            <input style="background-color:blue" type="submit" name="unlike" id="unlike"
+                class="button" value=<?=$Likes?> /> 
+          <?php
+          }
+        ?>
         &nbsp;Dislikes:
         <input type="submit" name="dislike" id="dislike"
                 class="button" value=<?=$Dislikes?> /> 
