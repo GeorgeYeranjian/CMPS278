@@ -45,7 +45,7 @@ if (!$con) {
 
   session_start();
   $userid=$_SESSION["id"];
-  $query1="INSERT INTO history(`userid`,`videoid`) VALUES($userid,$id)";
+  $query1="INSERT INTO history(`userid`,`videoid`) VALUES($userid,$id) ON DUPLICATE KEY UPDATE reg_date = CURRENT_TIMESTAMP";
 
 
 

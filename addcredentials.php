@@ -38,7 +38,7 @@
                 
                 for ($x = 0; $x < count($cred); $x++) {
                     if($cred[$x][0]==$username2){
-                        echo " $username is already taken";
+                        echo " $username2 is already taken";
                         $taken++;
                         
                     }
