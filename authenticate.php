@@ -32,7 +32,7 @@
                     $_SESSION["password"]=$user["Password"];
                     $_SESSION["id"]=$user["id"];
 
-                    header("Location: Home.php?userid=".$user["id"]."");
+                    header("Location: Home.php");
                 }
             }
 

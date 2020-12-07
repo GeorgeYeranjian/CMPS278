@@ -231,6 +231,16 @@ $(document).ready(function() {
         <input type="submit" name="dislike" id="dislike"
                 class="button" value=<?=$Dislikes?> /> 
     </form>
+    <br>
+    Add a comment:
+    <br>
+    <form action="addcomment.php" method="GET">
+          <textarea name="comment" id="comment" cols="30" rows="2"></textarea>
+          <input type="submit" name="addcomment" id="addcomment"
+                class="button"  value="Add Comment"/> 
+                <input type="hidden" name="videoid" value ="<?=$id?>" >
+          
+    </form>
         
       </div>
        </div>

@@ -46,8 +46,8 @@ if (!$con) {
   <p style="margin-right: 20px; font-weight: bold;">Suggested Videos</p>
   <div class="grid-container">
       <?php
-      $userid = $_GET["userid"];
-
+      session_start();
+      $userid=$_SESSION["id"];
       $sql = "SELECT id, name ,Thlocation FROM videos";
       $result = $con->query($sql);
       
