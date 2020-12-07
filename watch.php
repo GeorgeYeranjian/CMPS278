@@ -239,13 +239,65 @@ $(document).ready(function() {
           <input type="submit" name="addcomment" id="addcomment"
                 class="button"  value="Add Comment"/> 
                 <input type="hidden" name="videoid" value ="<?=$id?>" >
+                <img src="prof.png" alt="">
           
     </form>
+
+    All comments :
+    <br>
+    
+    <br>
+    <br>
+    <hr>
+    <?php
+    $host = "localhost"; /* Host name */
+    $user = "root"; /* User */
+    $password = ""; /* Password */
+    $dbname = "TUBEDB"; /* Database name */
+    
+    $con = mysqli_connect($host, $user, $password,$dbname);
+    // Check connection
+    if (!$con) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "SELECT * FROM comments WHERE videoid=$id";
+    $result = $con->query($sql);
+    
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+           ?>
+             
+            <img src="Uploadedfiles/prof.png" alt="" height=20px >
+            <?php
+            echo "".$row["userid"].": ".$row["comment"]."";
+            ?>
+            <hr>
+         
+            
+            
+           
+            
+
+            <?php
+           
+        }
+    } else {
+        echo "0 comments";
+    }
+    
+    $con->close();
+       
+       ?>
+
+          
         
       </div>
        </div>
       
         </div>
+
         <div id="suggested_div"></div>
         <script>
             $(function(){
