@@ -141,6 +141,25 @@ $(document).ready(function() {
                     });*/
 
     });
+    $("#addplaylist").click(function(e){
+        e.preventDefault();
+        let playlistid=document.getElementById("playlistselect");
+
+                   
+        $.ajax({
+            type: "POST",
+            url: 'addtoplaylist.php?id=<?=$id?>&playlistid='+playlistid.value,
+            data: {},
+            success: function(data){
+                console.log(data);
+            },
+            error: function(xhr,status,error){
+                console.log(error);
+            }
+            
+        });
+
+    });
 });
 
                         
@@ -245,10 +264,25 @@ $(document).ready(function() {
           <p>Views : <?=$Views?> </p>
           <p>Uploaded by :<?=$author?> &nbsp;  Date uploaded : <?=$Date?></p>
           <p>Description: <?=$videodesc?></p>
+          Add to playlist:
+          <select id="playlistselect">
+            <?php
+                include "connect.php";
+                $userid=$_SESSION["id"];
+                $sql1="SELECT * FROM playlists WHERE `owner`=$userid";
+                $result = $conn->query($sql1);
+                foreach($result as $playlist){
+                    ?>
+                    <option value="<?=$playlist["id"]?>"><?=$playlist["name"]?></option>
+                    <?php
+                }
+            ?>
+          </select>
+          <input type="submit" id="addplaylist" value="Add">
+          <br><br>
           <form method="post"> 
         Likes:
         <?php
-          include "connect.php";
           $userid=$_SESSION["id"];
           $sql="SELECT * FROM `likes` WHERE `userid`=$userid AND videoid=$id";
           $result = $conn->query($sql);
@@ -279,13 +313,15 @@ $(document).ready(function() {
           <?php
           }
           ?>
-            <i style="margin-left:30px" class="fas fa-share" id="share_icon" onclick="shareLink()" style="font-size: x-large;"></i>
-            Share
-            <script>
-                function shareLink(){
-                    alert(window.location.href);
-                }
-            </script>
+            <div style="display:inline-block" onclick="shareLink()">
+                <i style="margin-left:30px" class="fas fa-share" id="share_icon" style="font-size: x-large;"></i>
+                Share
+                <script>
+                    function shareLink(){
+                        alert(window.location.href);
+                    }
+                </script>
+            </div>
         <?php
 
         ?>

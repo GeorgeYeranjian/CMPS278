@@ -59,12 +59,29 @@ $sql5 = "CREATE TABLE IF NOT EXISTS `dislikes` (
     PRIMARY KEY (userid,videoid)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
+$sql6 = "CREATE TABLE IF NOT EXISTS `playlists` (
+    `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `owner` int(6) UNSIGNED,
+    `name` VARCHAR(20) NOT NULL,
+    `length` int(11) DEFAULT 0,
+    FOREIGN KEY (`owner`) REFERENCES auth(id)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+$sql6 = "CREATE TABLE IF NOT EXISTS `playlistentries` (
+    `playlistid` int(11) NOT NULL,
+    `videoid` int(11) NOT NULL,
+    FOREIGN KEY (playlistid) REFERENCES playlists(id),
+    FOREIGN KEY (videoid) REFERENCES videos(id),
+    PRIMARY KEY(playlistid,videoid)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
   // use exec() because no results are returned
   $conn->exec($sql);
   $conn->exec($sql1);
   $conn->exec($sql3);
   $conn->exec($sql4);
   $conn->exec($sql5);
+  $conn->exec($sql6);
  
   echo "Table AUTH created successfully";
 } catch(PDOException $e) {
