@@ -65,8 +65,9 @@ mysqli_query($con,$query1);
 $(document).ready(function() {
     $("#like").click(function(e){
         e.preventDefault();
+        document.location.href = 'like.php?id=<?=$id?>';
          
-                    $.ajax({
+                 /*   $.ajax({
                         type: "POST",
                         url: 'like.php?id=<?=$id?>',
                         data: { },
@@ -78,13 +79,14 @@ $(document).ready(function() {
                             console.log(error);
                         }
                         
-                    });
+                    });*/
 
     });
     $("#unlike").click(function(e){
         e.preventDefault();
+        document.location.href = 'unlike.php?id=<?=$id?>';
          
-                    $.ajax({
+                   /* $.ajax({
                         type: "POST",
                         url: 'unlike.php?id=<?=$id?>',
                         data: { },
@@ -96,12 +98,15 @@ $(document).ready(function() {
                             console.log(error);
                         }
                         
-                    });
+                    });*/
 
     });
     $("#dislike").click(function(e){
         e.preventDefault();
-                    $.ajax({
+        document.location.href = 'dislike.php?id=<?=$id?>';
+
+                   
+                   /* $.ajax({
                         type: "POST",
                         url: 'dislike.php?id=<?=$id?>',
                         data: {},
@@ -113,7 +118,27 @@ $(document).ready(function() {
                             console.log(error);
                         }
                         
-                    });
+                    });*/
+
+    });
+    $("#undislike").click(function(e){
+        e.preventDefault();
+        document.location.href = 'undislike.php?id=<?=$id?>';
+
+                   
+                   /* $.ajax({
+                        type: "POST",
+                        url: 'dislike.php?id=<?=$id?>',
+                        data: {},
+                        success: function(data){
+                            console.log(data);
+                            $('#dislike').val(data);
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });*/
 
     });
 });
@@ -217,19 +242,33 @@ $(document).ready(function() {
           $sql="SELECT * FROM `likes` WHERE `userid`=$userid AND videoid=$id";
           $result = $conn->query($sql);
           if($result->rowCount()==0){?>
-            <input type="submit" name="like" id="like"
-                class="button" value=<?=$Likes?> /> 
+            <input id="like" type="submit" value=<?=$Likes?> /> 
           <?php
           }
           else{?>
-            <input style="background-color:blue" type="submit" name="unlike" id="unlike"
-                class="button" value=<?=$Likes?> /> 
+            <input style="background-color:blue" type="submit"id="unlike"
+                value=<?=$Likes?> /> 
           <?php
           }
         ?>
-        &nbsp;Dislikes:
-        <input type="submit" name="dislike" id="dislike"
-                class="button" value=<?=$Dislikes?> /> 
+        &nbsp;
+        
+        
+        Dislikes:
+        <?php
+          $sql1="SELECT * FROM `dislikes` WHERE `userid`=$userid AND videoid=$id";
+          $result1 = $conn->query($sql1);
+          if($result1->rowCount()==0){?>
+            <input id="dislike" type="submit" value=<?=$Dislikes?> /> 
+          <?php
+          }
+          else{?>
+            <input style="background-color:red" type="submit" id="undislike"
+                value=<?=$Dislikes?> /> 
+          <?php
+          }
+        ?>
+        
     </form>
     <br>
     Add a comment:

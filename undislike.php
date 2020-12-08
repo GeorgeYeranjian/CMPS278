@@ -13,12 +13,12 @@
 
   $id = $_GET['id'];
   $query = "UPDATE videos
-  SET Dislikes = Dislikes + 1 
+  SET dislikes = dislikes - 1 
   WHERE id= $id";
 
   session_start();
   $userid=$_SESSION["id"];
-  $sql="INSERT INTO `dislikes` VALUES($userid,$id)";
+  $sql="DELETE FROM `dislikes` WHERE userid=$userid AND videoid=$id";
 
 
 
