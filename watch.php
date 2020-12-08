@@ -269,6 +269,16 @@ $(document).ready(function() {
                 value=<?=$Dislikes?> /> 
           <?php
           }
+          ?>
+            <i style="margin-left:30px" class="fas fa-share" id="share_icon" onclick="shareLink()" style="font-size: x-large;"></i>
+            Share
+            <script>
+                function shareLink(){
+                    alert(window.location.href);
+                }
+            </script>
+        <?php
+
         ?>
         
     </form>
