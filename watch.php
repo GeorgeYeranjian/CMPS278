@@ -196,12 +196,13 @@ $(document).ready(function() {
       
 
 
-     $fetchVideos = mysqli_query($con, "SELECT location, Likes, Dislikes, Views   FROM videos WHERE id ='$id' ");
+     $fetchVideos = mysqli_query($con, "SELECT location, Likes, Dislikes, Views, DATE_FORMAT(reg_date,'%Y-%m-%d') reg_date   FROM videos WHERE id ='$id' ");
      $row = mysqli_fetch_assoc($fetchVideos);
        $location = $row['location'];
        $Likes = $row['Likes'];
        $Dislikes = $row['Dislikes'];
        $Views = $row['Views'];
+       $Date= $row["reg_date"];
 
       ?>
        <div >
@@ -209,6 +210,7 @@ $(document).ready(function() {
        <br>
        <div>
           <p>Views : <?=$Views?></p>
+          <p>Date uploaded : <?=$Date?></p>
           <form method="post"> 
         Likes:
         <?php
