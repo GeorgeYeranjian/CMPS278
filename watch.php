@@ -247,7 +247,6 @@ $(document).ready(function() {
     <br>
     
     <br>
-    <br>
     <hr>
     <?php
     $host = "localhost"; /* Host name */
@@ -271,8 +270,16 @@ $(document).ready(function() {
              
             <img src="Uploadedfiles/prof.png" alt="" height=20px >
             <?php
-            echo "".$row["userid"].": ".$row["comment"]."";
+                $commentUserId=$row["userid"];
+                $sql1="SELECT Username FROM auth WHERE id=$commentUserId";
+                $result1=$con->query($sql1);
+                $idarray = mysqli_fetch_array($result1);
+                ?>
+                <span><?=$idarray["Username"]?>: <?=$row["comment"]?></span>
+
+                <?php
             ?>
+
             <hr>
          
             
