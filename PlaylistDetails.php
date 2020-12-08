@@ -30,7 +30,7 @@ $(function(){
         session_start();
         $userid=$_SESSION["id"];
         $playlistid=$_GET["playlistid"];
-        $sql="SELECT v.Thlocation,v.id,v.Views FROM videos AS v,playlistentries AS p WHERE p.playlistid='$playlistid' AND p.videoid=v.id";
+        $sql="SELECT v.Thlocation,v.id,v.Views,v.name FROM videos AS v,playlistentries AS p WHERE p.playlistid='$playlistid' AND p.videoid=v.id";
         $result = $conn->query($sql);
 
         foreach($result as $video){
@@ -38,7 +38,7 @@ $(function(){
             ?>
             <div class="videogrid" onclick="document.location.href='watch.php?id='+<?=$videoid?>">
                 <img src=<?= $video["Thlocation"]?> class="thumbnail">
-                <p class="title"><?= $video["id"]?></p>
+                <p class="title"><?= $video["name"]?></p>
                 <p class="viewcount"><?= $video["Views"]?> views</p>
                 <div class="lengthdiv">
                     <span class="lengthspan">12:20</span>

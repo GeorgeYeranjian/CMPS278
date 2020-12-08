@@ -54,7 +54,7 @@ if (!$con) {
       if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
-              $name = substr($row["name"], 0, -4);
+              $name = substr($row["name"], 0, 15);
               echo "<div id=".$row["id"].">";
               echo "<a href=". "watch.php?id=".$row["id"].">";
               echo "<img src=".$row["Thlocation"]." class="."thumbnail"."></a>";
