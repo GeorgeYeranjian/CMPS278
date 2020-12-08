@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="All.css">
-    
+    <link rel="stylesheet" type="text/css" href="home.css?ts=<?=time()?>" />
+    <link rel="stylesheet" type="text/css" href="all.css?ts=<?=time()?>" />
     <title>278 Tube</title>
 </head>
 <body>
@@ -21,13 +20,10 @@ $(function(){
   $("#nav-placeholder").load("menu.html");
 });
 
-
-
 </script>
 <!--end of Navigation bar-->
 
 <?php
-
 $host = "localhost"; /* Host name */
 $user = "root"; /* User */
 $password = ""; /* Password */
@@ -38,11 +34,10 @@ $con = mysqli_connect($host, $user, $password,$dbname);
 if (!$con) {
   die("Connection failed: " . mysqli_connect_error());
 }
-
-
 ?>
 
 <div id="main">
+  <h1 id="title" > TubeTitle</h1>
   <p style="margin-right: 20px; font-weight: bold;">Suggested Videos</p>
   <div class="grid-container">
       <?php
@@ -50,12 +45,12 @@ if (!$con) {
       $userid=$_SESSION["id"];
       $sql = "SELECT id, name ,Thlocation FROM videos";
       $result = $con->query($sql);
-      
+      $divname = "clickableDiv";
       if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
               $name = substr($row["name"], 0, -4);
-              echo "<div id=".$row["id"].">";
+              echo "<div id=".$row["id"]." class=".$divname.">";
               echo "<a href=". "watch.php?id=".$row["id"].">";
               echo "<img src=".$row["Thlocation"]." class="."thumbnail"."></a>";
               ?>
@@ -71,9 +66,6 @@ if (!$con) {
       }
       
       $con->close();
-
-
-
       ?>
     <!-- <div>
       <a href="watch.php">
