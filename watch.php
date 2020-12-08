@@ -221,21 +221,30 @@ $(document).ready(function() {
       
 
 
-     $fetchVideos = mysqli_query($con, "SELECT location, Likes, Dislikes, Views, DATE_FORMAT(reg_date,'%Y-%m-%d') reg_date   FROM videos WHERE id ='$id' ");
+     $fetchVideos = mysqli_query($con, "SELECT location, Likes, Dislikes,author, videodesc, Views, DATE_FORMAT(reg_date,'%Y-%m-%d') reg_date   FROM videos WHERE id ='$id' ");
      $row = mysqli_fetch_assoc($fetchVideos);
        $location = $row['location'];
        $Likes = $row['Likes'];
        $Dislikes = $row['Dislikes'];
        $Views = $row['Views'];
        $Date= $row["reg_date"];
+     
+                $authorId=$row["author"];
+                $sql1="SELECT Username FROM auth WHERE id=$authorId";
+                $result1=$con->query($sql1);
+                $idarray2 = mysqli_fetch_array($result1);
+                $author = $idarray2["Username"];
+                
+       $videodesc = $row["videodesc"];
 
       ?>
        <div >
         <video src=<?=$location?> controls width='500px' height='200px' ></video>
        <br>
        <div>
-          <p>Views : <?=$Views?></p>
-          <p>Date uploaded : <?=$Date?></p>
+          <p>Views : <?=$Views?> </p>
+          <p>Uploaded by :<?=$author?> &nbsp;  Date uploaded : <?=$Date?></p>
+          <p>Description: <?=$videodesc?></p>
           <form method="post"> 
         Likes:
         <?php
