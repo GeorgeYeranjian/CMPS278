@@ -13,12 +13,12 @@
 
   $id = $_GET['id'];
   $query = "UPDATE videos
-  SET Dislikes = Dislikes + 1 
+  SET likes = likes - 1 
   WHERE id= $id";
 
   session_start();
   $userid=$_SESSION["id"];
-  $sql="INSERT INTO `dislikes` VALUES($userid,$id)";
+  $sql="DELETE FROM `likes` WHERE userid=$userid AND videoid=$id";
 
 
 
@@ -26,12 +26,12 @@
 mysqli_query($con,$query);
 mysqli_query($con,$sql);
 
-$query2 = "SELECT Dislikes FROM videos WHERE id ='$id' ";
+$query2 = "SELECT Likes FROM videos WHERE id ='$id' ";
 
 $test = mysqli_query($con,$query2);
 
 $row = mysqli_fetch_assoc($test);
-$Dislikes = $row['Dislikes'];
+$Likes = $row['Likes'];
 
 header("Location: watch.php?id=".$id)
 

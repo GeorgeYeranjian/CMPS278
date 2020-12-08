@@ -33,7 +33,6 @@ $test = mysqli_query($con,$query2);
 $row = mysqli_fetch_assoc($test);
 $Likes = $row['Likes'];
 
-echo "$Likes";
-
+header("Location: watch.php?id=".$id)
 
 ?>

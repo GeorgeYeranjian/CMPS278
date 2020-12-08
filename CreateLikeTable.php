@@ -51,11 +51,20 @@ $sql4 = "CREATE TABLE IF NOT EXISTS `Comments` (
   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
+$sql5 = "CREATE TABLE IF NOT EXISTS `dislikes` (
+    `userid` int(6) UNSIGNED,
+    `videoid` int(11) NOT NULL,
+    FOREIGN KEY (userid) REFERENCES auth(id),
+    FOREIGN KEY (videoid) REFERENCES videos(id),
+    PRIMARY KEY (userid,videoid)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
   // use exec() because no results are returned
   $conn->exec($sql);
   $conn->exec($sql1);
   $conn->exec($sql3);
   $conn->exec($sql4);
+  $conn->exec($sql5);
  
   echo "Table AUTH created successfully";
 } catch(PDOException $e) {
