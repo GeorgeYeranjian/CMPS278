@@ -67,7 +67,7 @@ $sql6 = "CREATE TABLE IF NOT EXISTS `playlists` (
     FOREIGN KEY (`owner`) REFERENCES auth(id)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
-$sql6 = "CREATE TABLE IF NOT EXISTS `playlistentries` (
+$sql7 = "CREATE TABLE IF NOT EXISTS `playlistentries` (
     `playlistid` int(11) NOT NULL,
     `videoid` int(11) NOT NULL,
     FOREIGN KEY (playlistid) REFERENCES playlists(id),
@@ -82,6 +82,7 @@ $sql6 = "CREATE TABLE IF NOT EXISTS `playlistentries` (
   $conn->exec($sql4);
   $conn->exec($sql5);
   $conn->exec($sql6);
+  $conn->exec($sql7);
  
   echo "Table AUTH created successfully";
 } catch(PDOException $e) {
