@@ -27,6 +27,7 @@ $(function(){
 ?>
 
 <div id="main">
+<h1 style="color:red">Tube Title</h1>
   <p style="margin-right: 20px; font-weight: bold;">Playlists</p>
   <form action="CreatePlaylists.php">
     Playlist name

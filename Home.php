@@ -43,6 +43,7 @@ if (!$con) {
 ?>
 
 <div id="main">
+  <h1 style="color:red">Tube Title</h1>
   <p style="margin-right: 20px; font-weight: bold;">Suggested Videos</p>
   <div class="grid-container">
       <?php
@@ -50,12 +51,12 @@ if (!$con) {
       $userid=$_SESSION["id"];
       $sql = "SELECT id, name ,Thlocation FROM videos";
       $result = $con->query($sql);
-      
+      $divname = "clickableDiv";
       if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
               $name = substr($row["name"], 0, 15);
-              echo "<div id=".$row["id"].">";
+              echo "<div id=".$row["id"]." class=".$divname.">";
               echo "<a href=". "watch.php?id=".$row["id"].">";
               echo "<img src=".$row["Thlocation"]." class="."thumbnail"."></a>";
               ?>

@@ -22,6 +22,7 @@ $(function(){
 <!--end of Navigation bar-->
 
 <div id="main">
+<h1 style="color:red ;  font-size: 30px;">Tube Title</h1>
   <p style="margin-right: 20px; font-weight: bold;">WatchLater</p>
   <div class="grid-container">
       <?php

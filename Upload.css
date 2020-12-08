@@ -10,7 +10,7 @@
   border: 1px solid;
   padding: 10px;
   box-shadow: 5px 10px 18px red;
-  margin-top: 250px;
+  margin-top: 100px;
   margin-left: 350px;
   margin-right: 350px;
   text-align: center;
@@ -29,3 +29,10 @@
 #myFile{
   color: #c70606;
 }
+
+
+  /* Page content */
+  #main {
+    margin-left: 50px; /* Same as the width of the sidenav */
+  }
+  
