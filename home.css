@@ -19,11 +19,12 @@
   grid-template-columns: auto auto auto auto;
   grid-gap: 10px;
   height: 200px;  
+
 }
 
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: white;
   border: 1px solid black;
   font-size: 30px;
   line-height: 8px;
@@ -34,3 +35,10 @@
     margin-left: 50px; /* Same as the width of the sidenav */
   }
   
+#main #title{
+  color: rgb(207, 1, 1);
+}
+
+.clickableDiv{
+  width:200px;
+}

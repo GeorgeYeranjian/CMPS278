@@ -15,7 +15,7 @@
     <div style="margin: auto; width: 10%; margin-top: 250px;">
         
         <form method="GET" action="Login.php" style="display: inline-block;">
-            <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">LOG IN</h1>
+            <h1 style="color: red;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Tube Title Login</h1>
 
             Username <br>
             <input type="text" name="Username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>"><br>
