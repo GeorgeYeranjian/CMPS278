@@ -8,16 +8,6 @@
 <body>
     <?php
 
-            $file= 'credentials.txt';
-            $cred = file($file, FILE_IGNORE_NEW_LINES);
-          
-            for ($x = 0; $x < count($cred); $x++) {
-                $newarray = explode(":",$cred[$x]);
-                $cred[$x] = $newarray;
-                
-            }        
-            
-            $flagok=0;
 
             if(isset($_GET['Username']) AND isset($_GET['Password'])){
                 $username = $_GET['Username'];
