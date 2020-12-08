@@ -25,10 +25,9 @@
                     header("Location: Home.php");
                 }
             }
+            echo "Wrong credentials";
 
-            if($flagok ==0){
-                echo  "Wrong password";
-            }
+            
               
 
 
