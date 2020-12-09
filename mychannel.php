@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="watch.css"> 
         <link rel="stylesheet" href="All.css">
+        <link rel="stylesheet" href="watchlater.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <title>My Channel</title>
 </head>
@@ -49,8 +50,39 @@
                 ?>
                         <div>
                         <p>Subscribers: <?=$row["Subscribers"]?></p>
-
+                    <?php
+                                
+                                }
+                            } else {
+                                echo "0 comments";
+                            }
+                            
+                            $con->close();
+                            
+                            ?>
                                 My videos:
+                                <?php
+       
+                                    include "connect.php";
+                                        
+                                    
+                                        $sql="SELECT * FROM videos WHERE channelid='$channelid' ";
+                                        $result = $conn->query($sql);
+                                        foreach($result as $video1){
+                                            ?>
+                                            <div class="videogrid">
+                                            <img src=<?= $video1["Thlocation"]?> class="thumbnail">
+                                            <p class="title"><?= $video1["id"]?></p>
+                                            <p class="viewcount"><?= $video1["Views"]?> views</p>
+                                            <div class="lengthdiv">
+                                                <span class="lengthspan">12:20</span>
+                                            </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        
+                                    ?>
+
                     
                         </div>
                         <?php
@@ -63,16 +95,7 @@
                 
                     
 
-                    <?php
-                
-                }
-            } else {
-                echo "0 comments";
-            }
-            
-            $con->close();
-            
-            ?>
+               
 
 
        

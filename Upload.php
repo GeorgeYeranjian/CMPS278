@@ -39,8 +39,9 @@ if(isset($_POST['submit'])){
            session_start();
            $userid=$_SESSION["id"];
           $videodesc = $_POST["videodesc"];
+          $channelid = $_POST["channelid"];
            // Insert record
-           $query = "INSERT INTO videos(name,location,author,videodesc) VALUES('".$name."','".$target_file."','".$userid."','".$videodesc."')";
+           $query = "INSERT INTO videos(name,location,author,videodesc,channelid) VALUES('".$name."','".$target_file."','".$userid."','".$videodesc."',$channelid)";
 
            mysqli_query($con,$query);
            echo "Upload successfully.";
