@@ -334,7 +334,7 @@ $(document).ready(function() {
             
           </div>
           <p>Views : <?=$Views?> </p> 
-          <p>Uploaded by :<?=$author?> &nbsp;  Date uploaded : <?=$Date?></p>
+          <p>Date uploaded : <?=$Date?></p>
           <p>Description: <?=$videodesc?></p>
           Add to playlist:
           <select id="playlistselect">
