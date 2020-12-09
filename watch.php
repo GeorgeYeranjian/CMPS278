@@ -42,10 +42,11 @@ if (!$con) {
   $query = "UPDATE videos
   SET Views = Views + 1 
   WHERE id= $id";
+  $query1="INSERT INTO views(videoid) VALUES($id)";
 
   session_start();
   $userid=$_SESSION["id"];
-  $query1="INSERT INTO history(`userid`,`videoid`) VALUES($userid,$id) ON DUPLICATE KEY UPDATE reg_date = CURRENT_TIMESTAMP";
+  $query2="INSERT INTO history(`userid`,`videoid`) VALUES($userid,$id) ON DUPLICATE KEY UPDATE reg_date = CURRENT_TIMESTAMP";
 
 
 
@@ -53,6 +54,7 @@ if (!$con) {
 
 mysqli_query($con,$query);
 mysqli_query($con,$query1);
+mysqli_query($con,$query2);
 
 ?>
 

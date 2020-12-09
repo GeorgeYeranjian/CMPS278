@@ -91,6 +91,12 @@ $sql9 = "CREATE TABLE IF NOT EXISTS `subscriptions` (
     PRIMARY KEY(userid,channelid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
+$sql10 = "CREATE TABLE IF NOT EXISTS `views` (
+    `videoid` int(11) NOT NULL,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`videoid`) REFERENCES videos(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
   // use exec() because no results are returned
   $conn->exec($sql);
   $conn->exec($sql1);
@@ -101,6 +107,7 @@ $sql9 = "CREATE TABLE IF NOT EXISTS `subscriptions` (
   $conn->exec($sql7);
   $conn->exec($sql8);
   $conn->exec($sql9);
+  $conn->exec($sql10);
  
   echo "Table AUTH created successfully";
 } catch(PDOException $e) {

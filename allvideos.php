@@ -26,6 +26,7 @@
 </div>
 <div style="padding-left: 10%">
     <?php
+
         $host = "localhost"; /* Host name */
         $user = "root"; /* User */
         $password = ""; /* Password */
@@ -39,12 +40,54 @@
         session_start();
         $userid=$_SESSION["id"];
 
-        $sql = "SELECT * FROM videos WHERE author=$userid";
-        $result = $con->query($sql);
+        if(isset($_GET["top"])){
+            $top=$_GET["top"];
+            if($top=="overall"){
+                $sql1 = "SELECT * FROM videos WHERE author=$userid ORDER BY Views DESC";
+            }
+            elseif($top=="hours"){
+              //  $sql1 = "SELECT * FROM videos,views WHERE videos.author=$userid views.videoid=videos.id ORDER BY COUNT(views.reg_date)";
+              $sql1 = "SELECT * FROM videos WHERE author=$userid ORDER BY Views DESC";
+            }
+        }
+        else{
+            $sql1 = "SELECT * FROM videos WHERE author=$userid";
+        }
+
+        
+                
         ?>
         <h2>My Videos</h2>
+
+
         <?php
-        foreach($result as $video){
+        $sql="SELECT COUNT(views.videoid) as total FROM videos,views WHERE views.videoid=videos.id AND videos.author=$userid";
+        $result=$con->query($sql);
+        $views=$result->fetch_assoc()["total"];
+        ?>
+        
+            <p>Total Views: <?=$views?></p>
+            <p>Total Views last month: <?=$views?></p>
+        <?php
+      //  $sql2="SELECT COUNT(views.videoid) as total FROM videos,views WHERE views.videoid=videos.id AND videos.author=$userid AND datetime(views.reg_date) = '2020-12-09 19:39:47'";
+      //  $result2=$con->query($sql2);
+         //AND DATE(views.reg_date) <= getdate()
+        ?>
+        <form action="allvideos.php">
+            Top Videos:
+            <select name="top" id="top">
+                <option value="hours">48 Hours</option>
+                <option value="overall">Overall</option>
+            </select>
+            <input type="submit" value="Apply">
+        </form><br>
+        <?php
+
+        
+        $result1 = $con->query($sql1);
+        ?>
+        <?php
+        foreach($result1 as $video){
             ?>
             <div class="videogrid">
                 <img src=<?= $video["Thlocation"]?> class="thumbnail">
