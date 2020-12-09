@@ -33,6 +33,5 @@ $test = mysqli_query($con,$query2);
 $row = mysqli_fetch_assoc($test);
 $Dislikes = $row['Dislikes'];
 
-header("Location: watch.php?id=".$id)
-
+echo $Dislikes;
 ?>
