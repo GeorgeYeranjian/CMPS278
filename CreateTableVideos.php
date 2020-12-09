@@ -20,6 +20,7 @@ try {
     `location` varchar(255) NOT NULL,
     `Likes` int(11) DEFAULT 0,
     `Dislikes` int(11) DEFAULT 0,
+    `Comments` int(11) DEFAULT 0,
     `Views` int(11) DEFAULT 0,
     `Duration` int(11),
     `Thlocation` varchar(255) NOT NULL,

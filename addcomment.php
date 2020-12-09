@@ -21,11 +21,8 @@ if (isset($_GET['comment'] )){
 
 
     $query="INSERT INTO comments(`userid`,`videoid`,`comment`) VALUES($userid,$videoid,'".$comment."')";
-
-
-
-
-
+    mysqli_query($con,$query);
+    $query="UPDATE videos  SET Comments= Comments + 1 WHERE id = $videoid";
     mysqli_query($con,$query);
 
 

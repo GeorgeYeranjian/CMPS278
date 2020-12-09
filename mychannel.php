@@ -73,7 +73,7 @@
                                             <div class="videogrid">
                                             <img src=<?= $video1["Thlocation"]?> class="thumbnail">
                                             <p class="title"><?= $video1["name"]?></p>
-                                            <p class="viewcount"><?= $video1["Views"]?> views / <?=$video1["Likes"]?> Likes / <?=$video1["Dislikes"]?> Dislikes</p>
+                                            <p class="viewcount"><?= $video1["Views"]?> views / <?=$video1["Likes"]?> Likes / <?=$video1["Dislikes"]?> Dislikes / <?=$video1["Comments"]?> Comments</p>
                                             <div class="lengthdiv">
                                                 <span class="lengthspan">12:20</span>
                                             </div>
