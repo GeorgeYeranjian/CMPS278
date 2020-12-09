@@ -67,7 +67,7 @@
            
         }
         ?>
-        <div style="border: 1px solid black;width: 50%;" onclick="document.location.href='allvideos.php'">
+        <div style="border: 1px solid black;width: 50%; height:50px" onclick="document.location.href='allvideos.php'">
             <p style="margin-left:10px;font-weight:bold">All Videos</p>
         </div>
         <?php
