@@ -25,22 +25,27 @@ $(function(){
   <h1 style="color:red">Tube Title</h1>
   <p style="margin-right: 20px; font-weight: bold;">Subscriptions</p>
   <div class="grid-container">
-      <div class="videogrid">
-            <img src="testImage.jpg" class="thumbnail">
-            <p class="title">Video Title</p>
-            <p class="viewcount">View Count</p>
-            <div class="lengthdiv">
-                <span class="lengthspan">12:20</span>
-            </div>
+
+    <?php
+    include "connect.php";
+    session_start();
+    $userid=$_SESSION["id"];
+    $sql="SELECT v.Thlocation,v.id,v.Views,v.name FROM subscriptions as s,videos as v WHERE s.userid=$userid AND v.Channelid=s.channelid ORDER BY v.reg_date DESC";
+    $result=$conn->query($sql);
+    foreach($result as $video){
+      ?>
+      <div class="videogrid" onclick="document.location.href='watch.php?id='+<?=$video['id']?>">
+          <img src=<?= $video["Thlocation"]?> class="thumbnail">
+          <p class="title"><?= $video["name"]?></p>
+          <p class="viewcount"><?= $video["Views"]?> views</p>
+          <div class="lengthdiv">
+              <span class="lengthspan">12:20</span>
+          </div>
       </div>
-      <div class="videogrid">
-        <img src="testImage.jpg" class="thumbnail">
-            <p class="title">Video Title</p>
-            <p class="viewcount">View Count</p>
-            <div class="lengthdiv">
-                <span class="lengthspan">12:20</span>
-            </div>
-      </div>
+      <?php
+    }
+    ?>
+      
     
   </div>
 </div>

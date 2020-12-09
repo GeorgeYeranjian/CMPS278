@@ -160,6 +160,8 @@ $(document).ready(function() {
         });
 
     });
+    
+    
 });
 
                         
@@ -240,7 +242,7 @@ $(document).ready(function() {
       
 
 
-     $fetchVideos = mysqli_query($con, "SELECT name,location, Likes, Dislikes,author, videodesc, Views, DATE_FORMAT(reg_date,'%Y-%m-%d') reg_date   FROM videos WHERE id ='$id' ");
+     $fetchVideos = mysqli_query($con, "SELECT name,location, Channelid, Likes, Dislikes,author, videodesc, Views, DATE_FORMAT(reg_date,'%Y-%m-%d') reg_date   FROM videos WHERE id ='$id' ");
      $row = mysqli_fetch_assoc($fetchVideos);
        $name=$row["name"];
        $location = $row['location'];
@@ -248,12 +250,13 @@ $(document).ready(function() {
        $Dislikes = $row['Dislikes'];
        $Views = $row['Views'];
        $Date= $row["reg_date"];
+       $channelID=$row["Channelid"];
      
                 $authorId=$row["author"];
-                $sql1="SELECT Username FROM auth WHERE id=$authorId";
+                $sql1="SELECT name FROM channels WHERE id=$channelID";
                 $result1=$con->query($sql1);
                 $idarray2 = mysqli_fetch_array($result1);
-                $author = $idarray2["Username"];
+                $author = $idarray2["name"];
                 
        $videodesc = $row["videodesc"];
 
@@ -263,13 +266,77 @@ $(document).ready(function() {
        <br>
        <div>
           <h1><?=$name?></h1>
+          <div style="height:30px; border:1px solid red;width:37%">
+            <p onclick="document.location.href='ChannelVisit.php?id='+<?=$channelID?>" style="margin-top:7px;margin-left:5px;color:blue;display:inline-block">Uploaded By: <?=$author?></p>
+            <?php
+                include "connect.php";
+                $subsql="SELECT * FROM subscriptions WHERE userid=$userid AND channelid=$channelID";
+                $result=$conn->query($subsql);
+                if($result->rowCount()==1){
+                    ?>
+                    <input id="subscribe" type="submit" value="Subscribe" hidden/>
+                    <input id="unsubscribe" type="submit" style="background-color:lightblue" value="Unsubscribe"/>
+                    
+                    <?php
+                }
+                else{
+                    ?>
+                    <input id="subscribe" type="submit" value="Subscribe"/>
+                    <input id="unsubscribe" type="submit" value="Unsubscribe" style="background-color:lightblue" hidden/>
+                    <?php
+                }
+                
+            ?>
+
+
+            <script>
+                $("#subscribe").click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: 'Subscribe.php?id=<?=$channelID?>',
+                        data: {},
+                        success: function(data){
+                            console.log(data);
+                            $("#subscribe").css("display", "none");
+                            $("#unsubscribe").css("display", "inline-block");
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+                });
+                $("#unsubscribe").click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: 'Unsubscribe.php?id=<?=$channelID?>',
+                        data: {},
+                        success: function(data){
+                            console.log(data);
+                            $("#unsubscribe").css("display", "none");
+                            $("#subscribe").css("display", "inline-block");
+
+                            
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+                });
+            </script>
+            
+
+            
+          </div>
           <p>Views : <?=$Views?> </p> 
           <p>Uploaded by :<?=$author?> &nbsp;  Date uploaded : <?=$Date?></p>
           <p>Description: <?=$videodesc?></p>
           Add to playlist:
           <select id="playlistselect">
             <?php
-                include "connect.php";
                 $userid=$_SESSION["id"];
                 $sql1="SELECT * FROM playlists WHERE `owner`=$userid";
                 $result = $conn->query($sql1);
