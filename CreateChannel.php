@@ -30,10 +30,14 @@
         <div style="padding-left:10%">
         <h1>CREATE A NEW CHANNEL</h1>
 
-        <form action="CreateChannel.php" method="POST">
-           New Channel Name : <input type="text" name="name" id="name">
+        <form action="CreateChannel.php" method="POST" enctype="multipart/form-data">
+           New Channel Name : <input type="text" name="name" id="name"><br>
+           <input type="file" id="myFile" name="file">
            <button type="submit">Create</button>
+           
         </form>
+        
+    </div>
         </div>
 
         <?php
@@ -57,8 +61,46 @@
                 mysqli_query($con,$query);
                 // header("Location: watch.php?id=".$videoid."");
                 
+                $maxsize = 5242880; // 5MB
+                
+                $name = $_FILES['file']['name'];
+                $target_dir = "Uploadedfiles/";
+                $target_file = $target_dir . $_FILES["file"]["name"];
+            
 
-            }
+                // Select file type
+                $videoFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                // Valid file extensions
+                $extensions_arr = array('jpg','png','jpeg','gif');
+
+                // Check extension
+                if( in_array($videoFileType,$extensions_arr) ){
+
+                // Check file size
+                if(($_FILES['file']['size'] >= $maxsize) || ($_FILES["file"]["size"] == 0)) {
+                    echo "File too large. File must be less than 5MB.";
+                }else{
+                    // Upload
+                    if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
+                    // Insert record
+                    $query = "UPDATE channels
+                    SET Channelimage='$target_file'
+                    WHERE id= (SELECT MAX(id) FROM channels);";
+
+                    mysqli_query($con,$query);
+                    echo "Upload successfully.";
+                    header("Location: ChooseChannel.php");
+                    }
+                }
+
+                }else{
+                echo "Invalid file extension.";
+                }
+
+            } 
+
+            
 
         ?>
 

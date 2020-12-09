@@ -53,8 +53,13 @@
            ?>
             
                 <div class="videogrid" onclick="document.location.href='mychannel.php?channelid=<?=$row["id"]?>'">
-                    <p style="margin-left:10px" class="title"><?= $row["name"]?></p>
+                    <div style="float:left; margin-right:10px">
+                        <img src="<?= $row["Channelimage"]?>" alt="" style="height:120px">
+                    </div>
+                    <div >
+                    <h2 style="margin-left:10px" ><?= $row["name"]?></h2>
                     <p class="viewcount"><?= $row["Subscribers"]?> Subscribers</p>
+                    </div>
                     
                 </div>
             

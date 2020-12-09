@@ -80,6 +80,7 @@ $sql8 = "CREATE TABLE IF NOT EXISTS `Channels` (
     `owner` int(6) UNSIGNED,
     `name` VARCHAR(20) NOT NULL,
     `Subscribers` int(225) DEFAULT 0,
+    `Channelimage` varchar(255) NOT NULL,
      FOREIGN KEY (`owner`) REFERENCES auth(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
