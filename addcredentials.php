@@ -40,7 +40,8 @@
                 VALUES (:username2, :password2)");
                 $stmt->bindParam(':username2', $username2);
                 $stmt->bindParam(':password2', $password2);
-                $stmt->execute();   
+                $stmt->execute();  
+                 
             }
             catch(PDOException $e) {
                 echo $sql . "<br>" . $e->getMessage();
