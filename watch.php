@@ -240,8 +240,9 @@ $(document).ready(function() {
       
 
 
-     $fetchVideos = mysqli_query($con, "SELECT location, Likes, Dislikes,author, videodesc, Views, DATE_FORMAT(reg_date,'%Y-%m-%d') reg_date   FROM videos WHERE id ='$id' ");
+     $fetchVideos = mysqli_query($con, "SELECT name,location, Likes, Dislikes,author, videodesc, Views, DATE_FORMAT(reg_date,'%Y-%m-%d') reg_date   FROM videos WHERE id ='$id' ");
      $row = mysqli_fetch_assoc($fetchVideos);
+       $name=$row["name"];
        $location = $row['location'];
        $Likes = $row['Likes'];
        $Dislikes = $row['Dislikes'];
@@ -257,11 +258,12 @@ $(document).ready(function() {
        $videodesc = $row["videodesc"];
 
       ?>
-       <div >
+       <div>
         <video src=<?=$location?> controls width='500px' height='200px' ></video>
        <br>
        <div>
-          <p>Views : <?=$Views?> </p>
+          <h1><?=$name?></h1>
+          <p>Views : <?=$Views?> </p> 
           <p>Uploaded by :<?=$author?> &nbsp;  Date uploaded : <?=$Date?></p>
           <p>Description: <?=$videodesc?></p>
           Add to playlist:
@@ -401,11 +403,6 @@ $(document).ready(function() {
       
         </div>
 
-        <div id="suggested_div"></div>
-        <script>
-            $(function(){
-              $("#suggested_div").load("suggested.html");
-            });
-            </script>
+        
     </body>
 </html>

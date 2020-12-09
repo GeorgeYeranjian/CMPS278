@@ -15,7 +15,7 @@ try {
     `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
     `author` varchar(255) NOT NULL,
-    `Channelid` varchar(255) NOT NULL,
+    `Channelid` int(11) NOT NULL,
     `videodesc` varchar(255) NOT NULL,
     `location` varchar(255) NOT NULL,
     `Likes` int(11) DEFAULT 0,

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="watch.css"> 
-        <link rel="stylesheet" href="All.css">
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="All.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="watchlater.css">
+
     <title>My Channels</title>
 </head>
 
@@ -22,8 +24,8 @@
 
 
 
-</div>
-<div style="padding-left: 10%">
+</div><br><br>
+<div style="padding-left: 5%">
 
 
     My Channels:
@@ -49,23 +51,22 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
            ?>
-                <div>
-                    <a href="mychannel.php?channelid=<?=$row["id"]?>"><?=$row["name"]?></a>
-               
+            
+                <div class="videogrid" onclick="document.location.href='mychannel.php?channelid=<?=$row["id"]?>'">
+                    <p style="margin-left:10px" class="title"><?= $row["name"]?></p>
+                    <p class="viewcount"><?= $row["Subscribers"]?> Subscribers</p>
+                    
                 </div>
-                <?php
-            ?>
-
-            <hr>
-         
             
-            
-           
-            
-
             <?php
            
         }
+        ?>
+        <div style="border: 1px solid black;width: 50%;" onclick="document.location.href='allvideos.php'">
+            <p style="margin-left:10px;font-weight:bold">All Videos</p>
+        </div>
+        <?php
+
     } else {
         echo "0 comments";
     }

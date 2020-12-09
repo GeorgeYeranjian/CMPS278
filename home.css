@@ -1,7 +1,7 @@
 
 .thumbnail{
   width: 100%;
-  height: 100px;
+  height: 140px;
 }
 .title{
   font-size: 15px;
@@ -40,5 +40,5 @@
 }
 
 .clickableDiv{
-  width:200px;
+  width:300px;
 }
