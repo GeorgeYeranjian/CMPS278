@@ -68,7 +68,7 @@
         <?php
 
     } else {
-        echo "0 comments";
+        echo "0 Channels";
     }
     
     $con->close();
