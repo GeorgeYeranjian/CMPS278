@@ -341,7 +341,7 @@ $(document).ready(function() {
         
 
       ?>
-       <div style="display:inline-block;">
+       <div>
         <video src=<?=$location?> controls width='750px' height='500px' ></video>
         
        <br>
