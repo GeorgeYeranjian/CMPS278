@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="watch.css"> 
         <link rel="stylesheet" href="All.css">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
         
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -269,7 +271,9 @@ $(document).ready(function() {
         <video src=<?=$location?> controls width='500px' height='200px' ></video>
        <br>
        <div>
-          <h1><?=$name?></h1>
+          <h1 style="display:inline-block"><?=$name?></h1>
+          
+
           <div style="height:30px; border:1px solid red;width:37%">
             <p onclick="document.location.href='ChannelVisit.php?id='+<?=$channelID?>" style="margin-top:7px;margin-left:5px;color:blue;display:inline-block">Uploaded By: <?=$author?></p>
             <?php

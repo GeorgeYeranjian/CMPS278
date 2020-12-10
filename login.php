@@ -32,6 +32,9 @@
         <form method="GET" action="modifycredentials.php" style="display: inline-block;">
             <input type="submit" value="Change password">
         </form>
+        <form method="GET" action="Admin.php" style="display: inline-block;">
+            <input type="submit" value="Admin">
+        </form>
     </div>
     
     <?php
@@ -43,20 +46,26 @@
             $result = $conn->query($sql);
             if($result->rowCount() > 0){
                 $user=$result->fetch();
-                session_start();
-                $_SESSION["username"]=$user["Username"];
-                $_SESSION["password"]=$user["Password"];
-                $_SESSION["id"]=$user["id"];
-
-                if(isset($_GET["remember_me"])){
-                    setcookie('username', $username, time() + (86400 * 30), "/");
-                    setcookie('password', $password, time() + (86400 * 30), "/");
+                if($user["Suspended"]==1){
+                    echo "Your account has been suspended.";
                 }
+                else{
+                    session_start();
+                    $_SESSION["username"]=$user["Username"];
+                    $_SESSION["password"]=$user["Password"];
+                    $_SESSION["id"]=$user["id"];
 
-                header("Location: Home.php");
+                    if(isset($_GET["remember_me"])){
+                        setcookie('username', $username, time() + (86400 * 30), "/");
+                        setcookie('password', $password, time() + (86400 * 30), "/");
+                    }
+
+                    header("Location: Home.php");
+                }
+                
             }
             else{
-                echo "Wrong credentials";
+                echo "Wrong credentials.";
             }
         }
 ?>
