@@ -341,10 +341,13 @@ $(document).ready(function() {
         
 
       ?>
-       <div>
+       <div style="display:inline-block;">
         <video src=<?=$location?> controls width='750px' height='500px' ></video>
+        
        <br>
+       
        <div>
+         
           <h1 style="display:inline-block"><?=$name?></h1>
             <?php
             if(mysqli_num_rows($result2)==0){
@@ -573,8 +576,9 @@ $(document).ready(function() {
       </div>
        </div>
       
+      
         </div>
-
+        
         
     </body>
 </html>
