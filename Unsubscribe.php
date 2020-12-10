@@ -7,6 +7,8 @@
 
         $sql="DELETE FROM subscriptions WHERE userid=$id AND channelid=$channelid";
         $conn->exec($sql);
+        $sql1="UPDATE Channels  SET Subscribers= Subscribers - 1 WHERE id = $channelid";
+        $conn->exec($sql1);
         
         echo "Subscribed";  
     }

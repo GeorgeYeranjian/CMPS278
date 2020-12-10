@@ -40,9 +40,9 @@ $(function(){
 
           foreach($result1 as $video1){
             ?>
-            <div class="videogrid">
+            <div class="videogrid"  onclick="document.location.href='watch.php?id='+<?=$video1  ['id']?>">
               <img src=<?= $video1["Thlocation"]?> class="thumbnail">
-              <p class="title"><?= $video1["id"]?></p>
+              <p class="title"><?= $video1["name"]?></p>
               <p class="viewcount"><?= $video1["Views"]?> views</p>
               <div class="lengthdiv">
                   <span class="lengthspan">12:20</span>

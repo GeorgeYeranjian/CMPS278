@@ -89,7 +89,7 @@
         <?php
         foreach($result1 as $video){
             ?>
-            <div class="videogrid">
+            <div class="videogrid"  onclick="document.location.href='watch.php?id='+<?=$video['id']?>">
                 <img src=<?= $video["Thlocation"]?> class="thumbnail">
                 <p class="title"><?= $video["name"]?></p>
                 <p class="viewcount"><?= $video["Views"]?> views / <?=$video["Likes"]?> Likes / <?=$video["Dislikes"]?> Dislikes / <?=$video["Comments"]?> Comments</p>
