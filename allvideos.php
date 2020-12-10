@@ -92,7 +92,18 @@
             <div class="videogrid">
                 <img src=<?= $video["Thlocation"]?> class="thumbnail">
                 <p class="title"><?= $video["name"]?></p>
-                <p class="viewcount"><?= $video["Views"]?> views / <?=$video["Likes"]?> Likes / <?=$video["Dislikes"]?> Dislikes</p>
+                <p class="viewcount"><?= $video["Views"]?> views / <?=$video["Likes"]?> Likes / <?=$video["Dislikes"]?> Dislikes / <?=$video["Comments"]?> Comments</p>
+                <p>
+                    <?php
+                    if($video["Hide"]==0){
+                        echo "Shown";
+                    }
+                    else{
+                        echo "Hidden";
+
+                    }
+                    ?>
+                </p>
                 <div class="lengthdiv">
                     <span class="lengthspan">12:20</span>
                 </div>
