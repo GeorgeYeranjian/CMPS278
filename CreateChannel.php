@@ -32,7 +32,7 @@
 
         <form action="CreateChannel.php" method="POST" enctype="multipart/form-data">
            New Channel Name : <input type="text" name="name" id="name"><br>
-           <input type="file" id="myFile" name="file">
+           Channel Picture: <input type="file" id="myFile" name="file">
            <button type="submit">Create</button>
            
         </form>

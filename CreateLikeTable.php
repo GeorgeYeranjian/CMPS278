@@ -42,6 +42,7 @@ $sql3 = "CREATE TABLE IF NOT EXISTS `watchlater` (
 
 
 $sql4 = "CREATE TABLE IF NOT EXISTS `Comments` (
+    `id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `userid` int(6) UNSIGNED,
   `videoid` int(11) NOT NULL,
   `comment` TINYTEXT NULL,
@@ -106,6 +107,15 @@ $sql11 = "CREATE TABLE IF NOT EXISTS `flags` (
     PRIMARY KEY(userid,videoid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
+$sql12 = "CREATE TABLE IF NOT EXISTS `reply` (
+  `userid` int(6) UNSIGNED NOT NULL,
+  `videoid` int(11) NOT NULL,
+  `reply` varchar(255),
+  FOREIGN KEY (`userid`) REFERENCES auth(id),
+  FOREIGN KEY (`videoid`) REFERENCES videos(id) ON DELETE CASCADE,
+  PRIMARY KEY(userid,videoid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
   // use exec() because no results are returned
   $conn->exec($sql);
   $conn->exec($sql1);
@@ -118,6 +128,7 @@ $sql11 = "CREATE TABLE IF NOT EXISTS `flags` (
   $conn->exec($sql9);
   $conn->exec($sql10);
   $conn->exec($sql11);
+  $conn->exec($sql12);
  
   echo "Table AUTH created successfully";
 } catch(PDOException $e) {

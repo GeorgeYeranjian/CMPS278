@@ -49,7 +49,7 @@ if (!$con) {
       <?php
       session_start();
       $userid=$_SESSION["id"];
-      $sql = "SELECT id, name ,Thlocation FROM videos WHERE Hide=0";
+      $sql = "SELECT id, name ,Thlocation, Views FROM videos WHERE Hide=0";
       $result = $con->query($sql);
       $divname = "clickableDiv";
       if ($result->num_rows > 0) {
@@ -60,10 +60,11 @@ if (!$con) {
               echo "<a href=". "watch.php?id=".$row["id"].">";
               echo "<img src=".$row["Thlocation"]." class="."thumbnail"."></a>";
               ?>
-
-              <button class='btn' ><a href="addtowatchlater.php?userid=<?=$userid?>&videoid=<?=$row["id"]?>"><i class='fa fa-clock-o'></i></a></button>
+              <br><br>
+              <button class='btn' ><a href="addtowatchlater.php?userid=<?=$userid?>&videoid=<?=$row["id"]?>"><i class='fa fa-clock-o'></i></a></button><label style="font-size: medium">Watch later</label>
               <?php
-              echo "<p class="."title.".">" .$name."</p>";
+              echo "<p style='padding-left:10px'class="."title.".">" .$name."</p>";
+              echo "<p style='font-size: medium;padding-left:10px'>Views : " .$row["Views"]."</p>";
               
               echo "</div>";
           }

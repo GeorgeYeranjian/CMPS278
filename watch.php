@@ -65,6 +65,38 @@ mysqli_query($con,$query2);
 // $(function(){
 //   $("#nav-placeholder").load("menu.html");
 // });
+window.onload = function(){document.getElementById("reply").addEventListener("click",reply);};
+
+var counter = 0;
+function reply(){
+    if(counter==0){
+    var reply = document.createElement("input");
+    reply.id="replytext";
+    document.getElementById("replydiv").appendChild(reply);
+    counter++;
+    }
+    else{
+        counter=0;
+        var reply = document.getElementById("replytext").value;
+        var cmntid = document.getElementById("reply").name;
+        $.ajax({
+                        type: "POST",
+                        url: 'reply.php?id=<?=$userid?>',
+                        data: {reply:reply , cmntid: cmntid },
+                        success: function(data){
+                            console.log(data);
+                            $("#data").append(JSON.stringify(data));
+                          
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+
+    };
+    }
+
 
 $(document).ready(function() {
     $("#like").click(function(e){
@@ -310,7 +342,7 @@ $(document).ready(function() {
 
       ?>
        <div>
-        <video src=<?=$location?> controls width='500px' height='200px' ></video>
+        <video src=<?=$location?> controls width='750px' height='500px' ></video>
        <br>
        <div>
           <h1 style="display:inline-block"><?=$name?></h1>
@@ -504,19 +536,20 @@ $(document).ready(function() {
         // output data of each row
         while($row = $result->fetch_assoc()) {
            ?>
-             
+             <div id="<?=$row['id']?>">
             <img src="Uploadedfiles/prof.png" alt="" height=20px >
             <?php
                 $commentUserId=$row["userid"];
                 $sql1="SELECT Username FROM auth WHERE id=$commentUserId";
                 $result1=$con->query($sql1);
                 $idarray = mysqli_fetch_array($result1);
-                ?>
+                ?><div id="replydiv">
                 <span><?=$idarray["Username"]?>: <?=$row["comment"]?></span>
-
+                <button id="reply" name="<?=$row['id']?>">Reply</button>
+                </div>
                 <?php
             ?>
-
+            </div>
             <hr>
          
             
