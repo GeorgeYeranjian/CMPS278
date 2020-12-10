@@ -45,6 +45,7 @@
         $p=$result1->fetch_assoc();
         ?>
         <h2><?=$p["name"]?></h2>
+        <img style="width:300px;height:150px" src="<?=$p["Channelimage"]?>" alt="">
         <h3><?=$p["Subscribers"]?> subscribers</h3>
         <?php
 

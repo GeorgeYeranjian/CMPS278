@@ -296,11 +296,11 @@ $(document).ready(function() {
        $Date= $row["reg_date"];
        $channelID=$row["Channelid"];
      
-                $authorId=$row["author"];
-                $sql1="SELECT name FROM channels WHERE id=$channelID";
-                $result1=$con->query($sql1);
-                $idarray2 = mysqli_fetch_array($result1);
-                $author = $idarray2["name"];
+        $authorId=$row["author"];
+        $sql1="SELECT * FROM channels WHERE id=$channelID";
+        $result1=$con->query($sql1);
+        $idarray2 = mysqli_fetch_array($result1);
+        $author = $idarray2["name"];
                 
        $videodesc = $row["videodesc"];
 
@@ -330,8 +330,9 @@ $(document).ready(function() {
         ?>
 
 
-          <div style="height:30px; border:1px solid red;width:37%">
-            <p onclick="document.location.href='ChannelVisit.php?id='+<?=$channelID?>" style="margin-top:7px;margin-left:5px;color:blue;display:inline-block">Uploaded By: <?=$author?></p>
+          <div style="height:80px; border:1px solid red;width:37%">
+            <img style="height:100%;width:150px;float:left" src="<?=$idarray2["Channelimage"]?>" alt="">
+            <br><p onclick="document.location.href='ChannelVisit.php?id='+<?=$channelID?>" style="margin-left:5px;color:blue;display:inline-block">Uploaded By: <?=$author?></p>
             <?php
                 include "connect.php";
                 $subsql="SELECT * FROM subscriptions WHERE userid=$userid AND channelid=$channelID";
