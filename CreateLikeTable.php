@@ -15,7 +15,7 @@ try {
     `userid` int(6) UNSIGNED,
     `videoid` int(11) NOT NULL,
     FOREIGN KEY (userid) REFERENCES auth(id),
-    FOREIGN KEY (videoid) REFERENCES videos(id),
+    FOREIGN KEY (videoid) REFERENCES videos(id) ON DELETE CASCADE,
     PRIMARY KEY (userid,videoid)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
@@ -23,7 +23,7 @@ try {
     `userid` int(6) UNSIGNED,
     `videoid` int(11) NOT NULL,
     FOREIGN KEY (userid) REFERENCES auth(id),
-    FOREIGN KEY (videoid) REFERENCES videos(id),
+    FOREIGN KEY (videoid) REFERENCES videos(id) ON DELETE CASCADE,
     PRIMARY KEY (userid,videoid),
 
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -34,7 +34,7 @@ $sql3 = "CREATE TABLE IF NOT EXISTS `watchlater` (
   `userid` int(6) UNSIGNED,
   `videoid` int(11) NOT NULL,
   FOREIGN KEY (userid) REFERENCES auth(id),
-  FOREIGN KEY (videoid) REFERENCES videos(id),
+  FOREIGN KEY (videoid) REFERENCES videos(id) ON DELETE CASCADE,
   PRIMARY KEY (userid,videoid),
 
   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -46,7 +46,7 @@ $sql4 = "CREATE TABLE IF NOT EXISTS `Comments` (
   `videoid` int(11) NOT NULL,
   `comment` TINYTEXT NULL,
   FOREIGN KEY (userid) REFERENCES auth(id),
-  FOREIGN KEY (videoid) REFERENCES videos(id),
+  FOREIGN KEY (videoid) REFERENCES videos(id) ON DELETE CASCADE,
 
   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
@@ -55,7 +55,7 @@ $sql5 = "CREATE TABLE IF NOT EXISTS `dislikes` (
     `userid` int(6) UNSIGNED,
     `videoid` int(11) NOT NULL,
     FOREIGN KEY (userid) REFERENCES auth(id),
-    FOREIGN KEY (videoid) REFERENCES videos(id),
+    FOREIGN KEY (videoid) REFERENCES videos(id) ON DELETE CASCADE,
     PRIMARY KEY (userid,videoid)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
@@ -71,7 +71,7 @@ $sql7 = "CREATE TABLE IF NOT EXISTS `playlistentries` (
     `playlistid` int(11) NOT NULL,
     `videoid` int(11) NOT NULL,
     FOREIGN KEY (playlistid) REFERENCES playlists(id),
-    FOREIGN KEY (videoid) REFERENCES videos(id),
+    FOREIGN KEY (videoid) REFERENCES videos(id) ON DELETE CASCADE,
     PRIMARY KEY(playlistid,videoid)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
@@ -95,7 +95,15 @@ $sql9 = "CREATE TABLE IF NOT EXISTS `subscriptions` (
 $sql10 = "CREATE TABLE IF NOT EXISTS `views` (
     `videoid` int(11) NOT NULL,
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (`videoid`) REFERENCES videos(id)
+    FOREIGN KEY (`videoid`) REFERENCES videos(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+$sql11 = "CREATE TABLE IF NOT EXISTS `flags` (
+    `userid` int(6) UNSIGNED NOT NULL,
+    `videoid` int(11) NOT NULL,
+    FOREIGN KEY (`userid`) REFERENCES auth(id),
+    FOREIGN KEY (`videoid`) REFERENCES videos(id) ON DELETE CASCADE,
+    PRIMARY KEY(userid,videoid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
   // use exec() because no results are returned
@@ -109,6 +117,7 @@ $sql10 = "CREATE TABLE IF NOT EXISTS `views` (
   $conn->exec($sql8);
   $conn->exec($sql9);
   $conn->exec($sql10);
+  $conn->exec($sql11);
  
   echo "Table AUTH created successfully";
 } catch(PDOException $e) {

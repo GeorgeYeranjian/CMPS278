@@ -147,6 +147,44 @@ $(document).ready(function() {
                     });
 
     });
+    $("#flag").click(function(e){
+        e.preventDefault();
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: 'flag.php?id=<?=$id?>',
+                        data: {},
+                        success: function(data){
+                            console.log(data);
+                            $("#flag").css("display", "none");
+                            $("#unflag").css("display", "inline-block");
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+
+    });
+    $("#unflag").click(function(e){
+        e.preventDefault();
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: 'unflag.php?id=<?=$id?>',
+                        data: {},
+                        success: function(data){
+                            console.log(data);
+                            $("#unflag").css("display", "none");
+                            $("#flag").css("display", "inline-block");
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                        
+                    });
+
+    });
     $("#addplaylist").click(function(e){
         e.preventDefault();
         let playlistid=document.getElementById("playlistselect");
@@ -266,13 +304,31 @@ $(document).ready(function() {
                 
        $videodesc = $row["videodesc"];
 
+        $sql2="SELECT * FROM flags WHERE videoid=$id AND userid=$userid";
+        $result2=$con->query($sql2);
+        
+
       ?>
        <div>
         <video src=<?=$location?> controls width='500px' height='200px' ></video>
        <br>
        <div>
           <h1 style="display:inline-block"><?=$name?></h1>
-          
+            <?php
+            if(mysqli_num_rows($result2)==0){
+            ?>
+                <input id="flag" type="submit" value="Flag"/>
+                <input id="unflag" type="submit" value="Unflag" style="background-color:indianred" hidden/>
+            <?php
+            }
+            else{
+            ?>
+                <input id="flag" type="submit" value="Flag" hidden/>
+                <input id="unflag" type="submit" value="Unflag" style="background-color:indianred" />
+            <?php
+            }
+        ?>
+
 
           <div style="height:30px; border:1px solid red;width:37%">
             <p onclick="document.location.href='ChannelVisit.php?id='+<?=$channelID?>" style="margin-top:7px;margin-left:5px;color:blue;display:inline-block">Uploaded By: <?=$author?></p>

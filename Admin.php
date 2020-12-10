@@ -9,6 +9,7 @@
     <body>
         
         <?php include 'connect.php';?>
+        <h1>Users</h1>
         <table border="1" style="width:40%">
             <tr >
                 <th style="width:50%">Username</th>
@@ -47,9 +48,37 @@
                 }
             ?>    
         </table><br>
+        <h1>Videos</h1>
+        <table border="1" style="width:40%">
+            <tr >
+                <th style="width:25%">Video Name</th>
+                <th style="width:25%">Video ID</th>
+                <th style="width:25%">Flags</th>
+                <th style="width:25%">Delete</th>
+            </tr>    
+            <?php
+                $sql="SELECT * FROM videos WHERE Flags>0";
+                $result = $conn->query($sql);
+                foreach($result as $row){
+                    $videoid=$row["id"];
+                    $name=$row["name"];
+                    $flag=$row["Flags"];
+                    ?>
+                        <tr>
+                            <td style="width:25%"> <?= $name?> </td>
+                            <td style="width:25%"> <?= $videoid?> </td>
+                            <td style="width:25%"> <?= $flag?> </td>
+                            <td style="width:25%"><input value="Delete" type="submit" onclick= "document.location.href='deletevideo.php?id=<?=$id?>'"></td>
 
-        <input type="submit" value="Add" onclick="document.location.href='AddDeveloper.php'">
-        
+                            
+                        </tr>
+                    <?php
+
+                }
+            ?>    
+        </table><br>
+
+
 
     </body>
     
