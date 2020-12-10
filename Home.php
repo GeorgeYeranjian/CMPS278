@@ -49,7 +49,7 @@ if (!$con) {
       <?php
       session_start();
       $userid=$_SESSION["id"];
-      $sql = "SELECT id, name ,Thlocation FROM videos";
+      $sql = "SELECT id, name ,Thlocation FROM videos WHERE Hide=0";
       $result = $con->query($sql);
       $divname = "clickableDiv";
       if ($result->num_rows > 0) {

@@ -30,7 +30,7 @@ $(function(){
         session_start();
         $userid=$_SESSION["id"];
         $playlistid=$_GET["playlistid"];
-        $sql="SELECT v.Thlocation,v.id,v.Views,v.name FROM videos AS v,playlistentries AS p WHERE p.playlistid='$playlistid' AND p.videoid=v.id";
+        $sql="SELECT v.Thlocation,v.id,v.Views,v.name FROM videos AS v,playlistentries AS p WHERE p.playlistid='$playlistid' AND p.videoid=v.id AND v.Hide=0";
         $result = $conn->query($sql);
 
         foreach($result as $video){

@@ -30,7 +30,7 @@ $(function(){
     include "connect.php";
     session_start();
     $userid=$_SESSION["id"];
-    $sql="SELECT v.Thlocation,v.id,v.Views,v.name FROM subscriptions as s,videos as v WHERE s.userid=$userid AND v.Channelid=s.channelid ORDER BY v.reg_date DESC";
+    $sql="SELECT v.Thlocation,v.id,v.Views,v.name FROM subscriptions as s,videos as v WHERE s.userid=$userid AND v.Hide=0 AND v.Channelid=s.channelid ORDER BY v.reg_date DESC";
     $result=$conn->query($sql);
     foreach($result as $video){
       ?>

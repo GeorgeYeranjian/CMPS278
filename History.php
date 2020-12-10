@@ -34,7 +34,7 @@ $(function(){
 
         foreach($result as $video){
           $videoid=$video["videoid"];
-          $sql1="SELECT * FROM videos WHERE id='$videoid'";
+          $sql1="SELECT * FROM videos WHERE id='$videoid' AND Hide=0";
           $result1 = $conn->query($sql1);
 
           foreach($result1 as $video1){

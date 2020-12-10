@@ -23,6 +23,7 @@ try {
     `Comments` int(11) DEFAULT 0,
     `Views` int(11) DEFAULT 0,
     `Flags` int(11) DEFAULT 0,
+    `Hide` BOOLEAN DEFAULT FALSE,
     `Duration` int(11),
     `Thlocation` varchar(255) NOT NULL,
     `Thname` varchar(255) NOT NULL,

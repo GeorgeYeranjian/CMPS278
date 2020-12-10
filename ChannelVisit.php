@@ -48,7 +48,7 @@
         <h3><?=$p["Subscribers"]?> subscribers</h3>
         <?php
 
-        $sql = "SELECT * FROM videos WHERE Channelid=$channelid";
+        $sql = "SELECT * FROM videos WHERE Channelid=$channelid AND Hide=0";
         $result = $con->query($sql);
 
         
