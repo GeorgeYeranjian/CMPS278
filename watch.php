@@ -65,27 +65,30 @@ mysqli_query($con,$query2);
 // $(function(){
 //   $("#nav-placeholder").load("menu.html");
 // });
-window.onload = function(){document.getElementById("reply").addEventListener("click",reply);};
+// window.onload = function(){document.getElementById("reply").addEventListener("click",reply);};
 
 var counter = 0;
-function reply(){
+var counter2=0;
+function reply(id){
     if(counter==0){
     var reply = document.createElement("input");
-    reply.id="replytext";
-    document.getElementById("replydiv").appendChild(reply);
+    reply.id="replytext"+counter2;
+    
+    var cmntid = id;
+    document.getElementById(cmntid).appendChild(reply);
     counter++;
     }
     else{
         counter=0;
-        var reply = document.getElementById("replytext").value;
-        var cmntid = document.getElementById("reply").name;
+        var reply = document.getElementById("replytext"+counter2).value;
+        var cmntid = id;counter2++;
         $.ajax({
                         type: "POST",
                         url: 'reply.php?id=<?=$userid?>',
                         data: {reply:reply , cmntid: cmntid },
                         success: function(data){
                             console.log(data);
-                            $("#data").append(JSON.stringify(data));
+                            $("#"+data).append(reply);
                           
                         },
                         error: function(xhr,status,error){
@@ -546,10 +549,10 @@ $(document).ready(function() {
                 $sql1="SELECT Username FROM auth WHERE id=$commentUserId";
                 $result1=$con->query($sql1);
                 $idarray = mysqli_fetch_array($result1);
-                ?><div id="replydiv">
+                ?>
                 <span><?=$idarray["Username"]?>: <?=$row["comment"]?></span>
-                <button id="reply" name="<?=$row['id']?>">Reply</button>
-                </div>
+                <button id="reply" name="<?=$row['id']?>" onclick="reply(<?=$row['id']?>)">Reply</button>
+            
                 <?php
             ?>
             </div>
