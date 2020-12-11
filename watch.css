@@ -8,3 +8,11 @@
     position: relative;
     top: -400px;
 }
+
+#nav-placeholder{
+    height: 100%;
+  }
+
+  #closed{
+    height: 100%;
+  }

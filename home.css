@@ -17,7 +17,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-gap: 20px;
+  grid-gap: 10px;
   height: 200px;  
 
 }
@@ -41,4 +41,8 @@
 
 .clickableDiv{
   width:300px;
+}
+
+#nav-placeholder{
+  height: 100%;
 }
