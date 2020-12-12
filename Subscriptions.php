@@ -39,7 +39,7 @@ $(function(){
           <p class="title"><?= $video["name"]?></p>
           <p class="viewcount"><?= $video["Views"]?> views</p>
           <div class="lengthdiv">
-              <span class="lengthspan">12:20</span>
+              <!-- <span class="lengthspan">12:20</span> -->
           </div>
       </div>
       <?php
