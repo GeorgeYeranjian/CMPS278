@@ -24,10 +24,10 @@
 
 
 .grid-container > div {
-  background-color: white;
+  background: rgb(214, 211, 211);
   border: 1px solid black;
   font-size: 30px;
-  line-height: 8px;
+  line-height: 5px;
 }
 
   /* Page content */

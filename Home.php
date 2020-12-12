@@ -68,7 +68,7 @@ if (!$con) {
               $result1=$con->query($sql1);
               $idarray2 = mysqli_fetch_array($result1);
               $author = $idarray2["name"];
-              echo "<p style='padding-left:10px'class="."title.".">" .$name."</p>";
+              echo "<p style='font-size: X-Large;padding-left:10px'>" .$name."</p>";
               echo "<p style='font-size: medium;padding-left:10px'>Uploaded by: $author</p>";
               echo "<p style='font-size: medium;padding-left:10px'>Views : " .$row["Views"]. "</p>";
               
