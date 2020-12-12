@@ -15,6 +15,7 @@ if (!$con) {
 die("Connection failed: " . mysqli_connect_error());
 }
 
+$videoid = $_GET["videoid"];
             $maxsize = 5242880; // 5MB
                 
                 $name = $_FILES['file']['name'];
@@ -38,12 +39,12 @@ die("Connection failed: " . mysqli_connect_error());
                     // Upload
                     if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
                     // Insert record
-                    // $query = "UPDATE channels
-                    // SET Channelimage='$target_file'
-                    // WHERE id= (SELECT MAX(id) FROM channels);";
+                    $query = "UPDATE videos
+                    SET Thlocation='".$target_file."'
+                    WHERE id=$videoid;";
 
-                    // mysqli_query($con,$query);
-                    // echo "Upload successfully.";
+                    mysqli_query($con,$query);
+                    echo "Upload successfully.";
                     
                     }
                 }
@@ -52,12 +53,11 @@ die("Connection failed: " . mysqli_connect_error());
                 echo "Invalid file extension.";
                 }
 
-                // $sql="SELECT  Thlocation FROM videos WHERE id=$videoid;";                     
-                // $result = $con->query($sql);
-                // $row = $result->fetch_assoc();
+                $sql="SELECT  Thlocation FROM videos WHERE id=$videoid;";                     
+                $result = $con->query($sql);
+                $row = $result->fetch_assoc();
 
 
-$videoid = $_GET["videoid"];
 
 $channelid= $_GET["channelid"];
 $sql="UPDATE videos SET name='".$vidname ."' WHERE id=$videoid";                     
