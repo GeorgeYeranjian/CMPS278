@@ -15,7 +15,7 @@ $userid=$_SESSION["id"];
 $cmntid = $_POST["cmntid"];
 $reply = $_POST["reply"];
 
-$sql="INSERT INTO `reply` VALUES($userid,$cmntid,'".$reply."')";
+$sql="INSERT INTO reply(userid,commentid,reply) VALUES($userid,$cmntid,'".$reply."')";
 mysqli_query($con,$sql);
 
 echo "$cmntid";

@@ -108,12 +108,12 @@ $sql11 = "CREATE TABLE IF NOT EXISTS `flags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
 $sql12 = "CREATE TABLE IF NOT EXISTS `reply` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `userid` int(6) UNSIGNED NOT NULL,
-  `videoid` int(11) NOT NULL,
+  `commentid` int(11) UNSIGNED NOT NULL,
   `reply` varchar(255),
   FOREIGN KEY (`userid`) REFERENCES auth(id),
-  FOREIGN KEY (`videoid`) REFERENCES videos(id) ON DELETE CASCADE,
-  PRIMARY KEY(userid,videoid)
+  FOREIGN KEY (`commentid`) REFERENCES Comments(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
   // use exec() because no results are returned

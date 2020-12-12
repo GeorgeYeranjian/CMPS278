@@ -557,8 +557,24 @@ $(document).ready(function() {
                 ?>
                 <span><?=$idarray["Username"]?>: <?=$row["comment"]?></span>
                 <button id="reply" name="<?=$row['id']?>" onclick="reply(<?=$row['id']?>)">Reply</button>
-            
+
                 <?php
+                $commentid = $row["id"];
+                 $sql3 = "SELECT * FROM reply WHERE commentid=$commentid";
+                 $result3 = $con->query($sql3);
+                 if ($result3->num_rows > 0) {
+                    // output data of each row
+                    while($row3 = $result3->fetch_assoc()) {
+                        ?>
+
+                        <div>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="Uploadedfiles/reply.png" style="height:20px; width:20px"><?=$row3["reply"]?> </p>
+                        </div>
+
+                        <?php
+                    }
+
+                }
             ?>
             </div>
             <hr>
