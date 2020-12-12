@@ -13,7 +13,7 @@ if (!$con) {
 }
 
 if(isset($_POST['submit'])){
-    $maxsize = 5242880; // 5MB
+    $maxsize = 20971520; // 5MB
     
     $name = $_FILES['file']['name'];
     $target_dir = "Uploadedfiles/";
