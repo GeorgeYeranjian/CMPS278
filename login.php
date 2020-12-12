@@ -15,14 +15,14 @@
     <div style="margin: auto; width: 10%; margin-top: 250px;">
         
         <form method="GET" action="Login.php" style="display: inline-block;">
-            <h1 style="color: red;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Tube Title Login</h1>
+            <h1 style="color: red;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">278 Tube Login</h1>
 
             Username <br>
             <input type="text" name="Username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>"><br>
             Password <br>
             <input type="text" name="Password" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>">
             Remember me
-            <input type="radio" name="remember_me">
+            <input type="radio" name="remember_me"><br>
             <input type="submit" value="Log In"><br>
             
         </form>

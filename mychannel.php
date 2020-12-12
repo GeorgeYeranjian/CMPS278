@@ -70,8 +70,8 @@
                                         $result = $conn->query($sql);
                                         foreach($result as $video1){
                                             ?>
-                                            <div class="videogrid"  onclick="document.location.href='watch.php?id='+<?=$video1['id']?>">
-                                            <img src=<?= $video1["Thlocation"]?> class="thumbnail">
+                                            <div class="videogrid"  >
+                                            <img src=<?= $video1["Thlocation"]?> class="thumbnail" onclick="document.location.href='watch.php?id='+<?=$video1['id']?>">
                                             <p class="title"><?= $video1["name"]?></p>
                                             <p class="viewcount"><?= $video1["Views"]?> views / <?=$video1["Likes"]?> Likes / <?=$video1["Dislikes"]?> Dislikes / <?=$video1["Comments"]?> Comments</p>
                                             <button onclick="location.href = 'Editvid.php?videoid=<?=$video1['id']?>&channelid=<?=$channelid?>'"> Edit</button>
@@ -92,7 +92,7 @@
 
                                          
                                             <div class="lengthdiv">
-                                                <span class="lengthspan">12:20</span>
+                                                <!-- <span class="lengthspan">12:20</span> -->
                                             </div>
                                             </div>
                                         <?php

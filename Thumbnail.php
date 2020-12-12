@@ -22,7 +22,7 @@ $(function(){
 </script>
 <!--end of Navigation bar-->
 
-<h1>________________UPLOAD THUMBNAIL</h1>
+<p style="margin-left: 60px; font-weight: bold;">UPLOAD THUMBNAIL</p>
     <div id="uploadbox">
         <p>Click on the "Choose File" button to upload a file:</p>
         

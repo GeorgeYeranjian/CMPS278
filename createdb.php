@@ -32,7 +32,7 @@ try {
   $sql = "CREATE DATABASE IF NOT EXISTS TUBEDB";
   // use exec() because no results are returned
   $conn->exec($sql);
-  echo "Database created successfully<br>";
+  // echo "Database created successfully<br>";
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
 }

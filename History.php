@@ -22,7 +22,7 @@ $(function(){
 <!--end of Navigation bar-->
 
 <div id="main">
-<h1 style="color:red">Tube Title</h1>
+<h1 style="color:red">278 Tube</h1>
   <p style="margin-right: 20px; font-weight: bold;">History</p>
   <div class="grid-container">
       <?php

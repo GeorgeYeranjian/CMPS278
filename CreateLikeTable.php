@@ -130,7 +130,7 @@ $sql12 = "CREATE TABLE IF NOT EXISTS `reply` (
   $conn->exec($sql11);
   $conn->exec($sql12);
  
-  echo "Table AUTH created successfully";
+  // echo "Table AUTH created successfully";
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
 }

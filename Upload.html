@@ -22,7 +22,7 @@ $(function(){
 </script>
 <!--end of Navigation bar-->
 <div id="main">
-    <h1 style="color:red ; font-size: 30px;">Tube Title</h1>
+    <h1 style="color:red ; font-size: 30px;">278 Tube </h1>
 <p style="margin-right: 20px; font-weight: bold;">UPLOAD VIDEO</p>
 
     <div id="uploadbox">
