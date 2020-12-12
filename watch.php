@@ -88,10 +88,12 @@ function reply(id){
                         data: {reply:reply , cmntid: cmntid, counter2:counter2 },
                         success: function(data){
                             console.log(data);
+                            $("#"+data).append("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                           
                             $("#"+data).append(reply);
                             $("#reply").css("display", "none");
                             console.log(counter2);
-                            $("#replytext"+counter2).setAttribute("type", "hidden");
+                            $("#replytext0").css("display", "none");
                           
                         },
                         error: function(xhr,status,error){
