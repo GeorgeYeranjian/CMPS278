@@ -49,7 +49,7 @@
                 while($row = $result->fetch_assoc()) {
                 ?>
                         <div>
-                        <p>Subscribers: <?=$row["Subscribers"]?></p>
+                        <h1>Subscribers: <?=$row["Subscribers"]?></h1>
                     <?php
                                 
                                 }
@@ -60,7 +60,8 @@
                             $con->close();
                             
                             ?>
-                                My videos:
+                               <h1>My videos: <?=$row["Subscribers"]?></h1>
+                                <br><br>
                                 <?php
        
                                     include "connect.php";

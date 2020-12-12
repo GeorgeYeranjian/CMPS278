@@ -81,21 +81,24 @@ function reply(id){
     else{
         counter=0;
         var reply = document.getElementById("replytext"+counter2).value;
-        var cmntid = id;counter2++;
+        var cmntid = id;
         $.ajax({
                         type: "POST",
                         url: 'reply.php?id=<?=$userid?>',
-                        data: {reply:reply , cmntid: cmntid },
+                        data: {reply:reply , cmntid: cmntid, counter2:counter2 },
                         success: function(data){
                             console.log(data);
                             $("#"+data).append(reply);
+                            $("#reply").css("display", "none");
+                            console.log(counter2);
+                            $("#replytext"+counter2).setAttribute("type", "hidden");
                           
                         },
                         error: function(xhr,status,error){
                             console.log(error);
                         }
                         
-                    });
+                    });counter2++;
 
     };
     }
