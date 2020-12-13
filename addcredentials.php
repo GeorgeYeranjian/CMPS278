@@ -46,7 +46,10 @@
             catch(PDOException $e) {
                 echo $sql . "<br>" . $e->getMessage();
             } 
+
+            header("Location: login.php");
         }
+
         
     ?>
 </body>

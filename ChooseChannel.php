@@ -12,11 +12,7 @@
 </head>
 
 
-<script >
-  $(function(){
-  $("#nav-placeholder").load("menu.html");
-});
-</script>
+
 
 <body>
 
@@ -24,7 +20,13 @@
 
 
 
-</div><br><br>
+</div>
+<script >
+  $(function(){
+  $("#nav-placeholder").load("menu.html");
+});
+</script>
+<br><br><br>
 <div style="padding-left: 5%">
 
 
@@ -57,14 +59,14 @@
         while($row = $result->fetch_assoc()) {
            ?>
             
-                <div class="videogrid" >
+                <div class="videogrid" style="height:123px">
                     <div style="float:left; margin-right:10px">
-                        <img src="<?= $row["Channelimage"]?>" alt="" style="height:120px" onclick="document.location.href='mychannel.php?channelid=<?=$row["id"]?>'">
+                        <img src="<?= $row["Channelimage"]?>" alt="" style="height:120px" onclick="document.location.href='mychannel.php?channelid=<?=$row['id']?>'">
                     </div>
                     <div >
-                    <h2 style="margin-left:10px" onclick="document.location.href='mychannel.php?channelid=<?=$row["id"]?>'"><?= $row["name"]?></h2>
-                    <p class="viewcount"><?= $row["Subscribers"]?> Subscribers</p>
-                    <button onclick="javascript:var result= confirm('Are you sure you want to delete this Channel?'); if(result){ location.href = 'Deletech.php?channelid=<?=$row['id']?>'}"> Delete</button>
+                    <h2 style="margin-left:10px" onclick="document.location.href='mychannel.php?channelid=<?=$row['id']?>'"><?= $row["name"]?></h2>
+                    <label class="viewcount" style="Display: inline-block;"><?= $row["Subscribers"]?> Subscribers</label>
+                    <button onclick="javascript:var result= confirm('Are you sure you want to delete this Channel?'); if(result){ location.href = 'Deletech.php?channelid=<?=$row['id']?>'}" > Delete</button>
                     </div>
                     
                 </div>

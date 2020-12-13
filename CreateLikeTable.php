@@ -82,14 +82,14 @@ $sql8 = "CREATE TABLE IF NOT EXISTS `Channels` (
     `name` VARCHAR(20) NOT NULL,
     `Subscribers` int(225) DEFAULT 0,
     `Channelimage` varchar(255) NOT NULL,
-     FOREIGN KEY (`owner`) REFERENCES auth(id)
+     FOREIGN KEY (`owner`) REFERENCES auth(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
 $sql9 = "CREATE TABLE IF NOT EXISTS `subscriptions` (
     `userid` int(6) UNSIGNED NOT NULL,
     `channelid` int(11) NOT NULL,
     FOREIGN KEY (`userid`) REFERENCES auth(id),
-    FOREIGN KEY (`channelid`) REFERENCES Channels(id),
+    FOREIGN KEY (`channelid`) REFERENCES Channels(id) ON DELETE CASCADE,
     PRIMARY KEY(userid,channelid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
