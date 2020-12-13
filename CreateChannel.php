@@ -31,8 +31,8 @@
         <h1>CREATE A NEW CHANNEL</h1>
 
         <form action="CreateChannel.php" method="POST" enctype="multipart/form-data">
-           New Channel Name : <input type="text" name="name" id="name"><br>
-           Channel Picture: <input type="file" id="myFile" name="file">
+           New Channel Name : <input type="text" name="name" id="name" require><br>
+           Channel Picture: <input type="file" id="myFile" name="file" require>
            <button type="submit">Create</button>
            
         </form>
@@ -90,18 +90,18 @@
 
                     mysqli_query($con,$query);
                     echo "Upload successfully.";
-                    header("Location: ChooseChannel.php");
+                    
                     }
                 }
 
                 }else{
                 echo "Invalid file extension.";
                 }
+                header("Location: ChooseChannel.php");
 
             } 
 
             
-
         ?>
 
 </body>

@@ -29,9 +29,9 @@ $(function(){
         <p>Click on the "Choose File" button to upload a file:</p>
         
         <form action="Upload.php" method="POST" enctype="multipart/form-data" style=" display: inline-block;">
-           Name of your video: <input type="text" name="videoname"><br><br>
+           Name of your video: <input type="text" name="videoname" required><br><br>
            Video description: <textarea name="videodesc" id="videodesc" cols="30" rows="2"></textarea><br>
-           Choose a Channel to upload from : <select id="channels" name="channelid">
+           Choose a Channel to upload from : <select id="channels" name="channelid" required oninvalid="this.setCustomValidity('Please Create a Channel first')">
             <?php
              session_start();
                 include "connect.php";
