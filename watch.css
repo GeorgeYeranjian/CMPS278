@@ -3,16 +3,6 @@
     left: 100px;
 }
 
-#suggested_div{
-    float: right;
-    position: relative;
-    top: -400px;
+*{
+    overflow-x: hidden;
 }
-
-#nav-placeholder{
-    height: 100%;
-  }
-
-  #closed{
-    height: 100%;
-  }

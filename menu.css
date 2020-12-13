@@ -52,19 +52,7 @@ html,body{
 .dropdown:hover .dropbtn {background-color: #6e0404 ;}
 
 
-.sidenav {
-    height: 100%;
-    width: 0px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: white;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 20px;
-  }
-  
+
   .sidenav #title{
     padding-left: 32px;
     padding-bottom: 10px;
@@ -86,18 +74,35 @@ html,body{
     transition: 0.3s;
   }
   
+  .sidenav {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+  }
+  
+
   #closed{
+    height: 100%;
+    width: 40px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(165, 31, 31);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
     border-right: 1px solid #818181;
     float: left;
-    height: 100%;
-    width: 40px; 
-    overflow: hidden;
-    position: absolute;
-    padding-left: 0px;
-    top:0;
-    left:0;
-    text-align: center;
-    background-color: rgb(165, 31, 31);
+    text-align: center; 
+  
   }
 
   /* When you mouse over the navigation links, change their color */

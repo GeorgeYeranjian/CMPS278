@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="watch.css"> 
-        <link rel="stylesheet" href="All.css">
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-        
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="watch.css">
+    <link rel="stylesheet" href="All.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Watch</title>
     </head>
     <body>
         
-<!--Navigation bar-->
-<div id="nav-placeholder">
-
-
-
+ <!--Navigation bar-->
+ <div id="nav-placeholder">
 </div>
 
 <script >
-  $(function(){
+$(function(){
   $("#nav-placeholder").load("menu.html");
 });
 </script>
-
+<!--end of Navigation bar-->
 <?php
 
 $host = "localhost"; /* Host name */
@@ -62,10 +58,6 @@ mysqli_query($con,$query2);
 
 
 <script type="text/javascript">
-// $(function(){
-//   $("#nav-placeholder").load("menu.html");
-// });
-// window.onload = function(){document.getElementById("reply").addEventListener("click",reply);};
 
 var counter = 0;
 var counter2=0;
@@ -349,7 +341,7 @@ $(document).ready(function() {
         
 
       ?>
-       <div>
+       <div >
         <video src=<?=$location?> controls width='750px' height='500px' ></video>
         
        <br>
